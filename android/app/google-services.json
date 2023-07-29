@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "837109495001",
+    "project_id": "sonanceep-sns",
+    "storage_bucket": "sonanceep-sns.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837109495001:android:bc0a25ed9e6ad10a2d7ac8",
+        "android_client_info": {
+          "package_name": "com.example.sonanceep_sns"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837109495001-pd4g1vu31mnqactr4rp3lfsj0l93lbms.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmEb0WurRz2d3BV4U1Uw38OanKoP0pZVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837109495001-pd4g1vu31mnqactr4rp3lfsj0l93lbms.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "837109495001-03ughppfhnqervpe28g061i4iirlo4j3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ondebandSns"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
