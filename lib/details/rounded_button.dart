@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
 
-  RoundedButton({
+  const RoundedButton({
     Key? key,
     required this.onPressed,
     required this.widthRate,
@@ -21,21 +21,21 @@ class RoundedButton extends StatelessWidget {
     final maxWidth = MediaQuery.of(context).size.width;  //モバイルの幅のピクセル数
 
     return 
-    Container(
+    SizedBox(
       width: maxWidth * widthRate,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16.0),
         child: ElevatedButton(
           onPressed: onPressed,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color,
+          ),
           child: Padding(
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               vertical: 16.0,  //上下
               horizontal: 8.0,  //左右
             ),
             child: Text(text),
-          ),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: color,
           ),
         ),
       ),
