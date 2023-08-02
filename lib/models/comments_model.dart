@@ -110,7 +110,7 @@ class CommentsModel extends ChangeNotifier {
       primaryActionColor: Colors.orange,
       primaryActionBuilder: (_, controller, __) {
         return InkWell(
-          child: Icon(Icons.send, color: Colors.orange,),
+          child: const Icon(Icons.send, color: Colors.orange,),
           onTap: () async {
             if(textEditingController.text.isNotEmpty) {
               //メインの動作
@@ -246,7 +246,7 @@ class CommentsModel extends ChangeNotifier {
               reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
               postCommentCreatorUid: comment.uid,
               passiveUserName: comment.userName,
-              postCommentDocRef: commentDoc.reference,
+              postCommentDocRef: commentDocRef,
               postCommentId: comment.postCommentId,
               postCommentReportId: postCommentReportId,
               comment: comment.comment,
@@ -257,7 +257,7 @@ class CommentsModel extends ChangeNotifier {
             );
             await controller.dismiss();
             await voids.showFlutterToast(msg: 'コメントを報告しました');
-            await commentDoc.reference.collection('postCommentReports').doc(postCommentReportId).set(postCommentReport.toJson());
+            await commentDocRef.collection('postCommentReports').doc(postCommentReportId).set(postCommentReport.toJson());
           },
           child: const Text('送信', style: TextStyle(color: Colors.red),),
         );
