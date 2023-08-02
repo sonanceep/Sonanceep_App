@@ -114,6 +114,7 @@ class MyHomePage extends HookConsumerWidget {
           HomeScreen(mainModel: mainModel, muteUserModel: muteUserModel, themeModel: themeModel,),
           SearchPage(mainModel: mainModel,),
           const ArticlesScreen(),
+          const ArticlesScreen(),
           ProfileScreen(mainModel: mainModel,),
         ],
       ),
