@@ -18,7 +18,7 @@ class TextFieldContainer extends StatelessWidget {
         // margin 要素の外の余白
         // symmetric 左右対称
         // vertical 上下対象な余白
-        margin: EdgeInsets.symmetric(vertical: 8.0),
+        margin: const EdgeInsets.symmetric(vertical: 8.0),
         width: width * 0.9,
         decoration: BoxDecoration(
           border: Border.all(  //全方向にボーダーが付く
@@ -27,7 +27,7 @@ class TextFieldContainer extends StatelessWidget {
           boxShadow: [BoxShadow(
             color: shadowColor,
             blurRadius: 8.0,
-            offset: Offset(0, 0),
+            offset: const Offset(0, 0),
           )],
           borderRadius: BorderRadius.circular(16.0),
         ),
