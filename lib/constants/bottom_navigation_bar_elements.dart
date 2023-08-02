@@ -18,6 +18,10 @@ final List<BottomNavigationBarItem> bottomNavigationBarElements = [
     label: articleText,
   ),
   const BottomNavigationBarItem(
+    icon: Icon(Icons.article),
+    label: articleText,
+  ),
+  const BottomNavigationBarItem(
     icon: Icon(Icons.person),
     label: profileText,
   ),
