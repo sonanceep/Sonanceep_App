@@ -17,7 +17,8 @@ import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';
 import 'package:sonanceep_sns/models/themes_model.dart';
 import 'package:sonanceep_sns/views/auth/verify_email_page.dart';
-import 'package:sonanceep_sns/views/main/articles_screen.dart';
+import 'package:sonanceep_sns/views/main/create_screen.dart';
+import 'package:sonanceep_sns/views/main/message_screen.dart';
 // options
 import 'firebase_options.dart';
 // constants
@@ -113,8 +114,8 @@ class MyHomePage extends HookConsumerWidget {
           // 注意：ページじゃないのでScaffold
           HomeScreen(mainModel: mainModel, muteUserModel: muteUserModel, themeModel: themeModel,),
           SearchPage(mainModel: mainModel,),
-          const ArticlesScreen(),
-          const ArticlesScreen(),
+          const CreateScreen(),
+          const MessageScreen(),
           ProfileScreen(mainModel: mainModel,),
         ],
       ),
