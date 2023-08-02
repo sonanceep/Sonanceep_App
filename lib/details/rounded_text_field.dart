@@ -27,7 +27,7 @@ class RoundedTextField extends StatelessWidget {
       child: TextFormField(
         keyboardType: keyboardType,
         onChanged: onChanged,
-        decoration: InputDecoration(hintText: hintText, hintStyle: TextStyle(fontWeight: FontWeight.bold)),
+        decoration: InputDecoration(hintText: hintText, hintStyle: const TextStyle(fontWeight: FontWeight.bold)),
         controller: controller,
       ),
     );

@@ -9,7 +9,7 @@ import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/themes_model.dart';
 
 class SNSDrawer extends StatelessWidget {
-  SNSDrawer({
+  const SNSDrawer({
     Key? key,
     required this.mainModel,
     required this.themeModel,
