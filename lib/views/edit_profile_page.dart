@@ -31,7 +31,7 @@ class EditProfilePage extends ConsumerWidget {
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(16.0),
               child: InkWell(
                 child: editProfileModel.croppedFile == null ? 
                 UserImage(userImageURL: firestoreUser.userImageURL, length: 180.0)
@@ -44,7 +44,7 @@ class EditProfilePage extends ConsumerWidget {
             ),
             //ユーザー名を編集したい
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 32.0),
+              padding: const EdgeInsets.symmetric(vertical: 32.0),
               child: RoundedTextField(
                 keyboardType: TextInputType.name,
                 onChanged: (value) => editProfileModel.userName = value,
@@ -55,7 +55,7 @@ class EditProfilePage extends ConsumerWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(vertical: 32.0),
+              padding: const EdgeInsets.symmetric(vertical: 32.0),
                 child: Center(
                 child: RoundedButton( //プロフィールの更新に必要
                   onPressed: () => editProfileModel.updateUserInfo(context: context, mainModel: mainModel),
