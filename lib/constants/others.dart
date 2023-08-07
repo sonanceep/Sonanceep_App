@@ -6,15 +6,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // packages
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
 
+// ローカルの画像読み取り ---------------------------------------------------------------
 Future<XFile> returnXFile() async {
   final ImagePicker picker = ImagePicker();
-  // Pick an image
   final XFile? image = await picker.pickImage(source: ImageSource.gallery);
   return image!;
 }
@@ -36,6 +36,8 @@ Future<File?> returnCroppedFile({ required XFile? xFile }) async {
   );
   return result;
 }
+// --------------------------------------------------------------------------------------
+
 User? returnAuthUser() => FirebaseAuth.instance.currentUser;
 
 DocumentReference<Map<String,dynamic>> userDocToTokenDocRef({

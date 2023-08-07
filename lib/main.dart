@@ -114,7 +114,7 @@ class MyHomePage extends HookConsumerWidget {
           // 注意：ページじゃないのでScaffold
           HomeScreen(mainModel: mainModel, muteUserModel: muteUserModel, themeModel: themeModel,),
           SearchPage(mainModel: mainModel,),
-          const CreateScreen(),
+          CreateScreen(mainModel: mainModel,),
           const MessageScreen(),
           ProfileScreen(mainModel: mainModel,),
         ],

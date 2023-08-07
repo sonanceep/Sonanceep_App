@@ -67,7 +67,7 @@ class EditProfileModel extends ChangeNotifier {
     // users/uid/ファイル名 にアップロード
     await storageRef.putFile(file);
     // users/uid/ファイル名 のURLを取得している
-    return storageRef.getDownloadURL();  // Future の場合時間がかかる処理のため await が必要
+    return await storageRef.getDownloadURL();  // Future の場合時間がかかる処理のため await が必要
   }
 
   // Future<void> onImageTapped() async {
