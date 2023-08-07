@@ -6,15 +6,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // packages
-import 'package:image_cropper/image_cropper.dart';
+import 'package:video_player/video_player.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
 
+// ローカルの画像読み取り ---------------------------------------------------------------
 Future<XFile> returnXFile() async {
   final ImagePicker picker = ImagePicker();
-  // Pick an image
   final XFile? image = await picker.pickImage(source: ImageSource.gallery);
   return image!;
 }
@@ -36,6 +37,35 @@ Future<File?> returnCroppedFile({ required XFile? xFile }) async {
   );
   return result;
 }
+
+// --------------------------------------------------------------------------------------
+
+// ローカルの動画読み取り ---------------------------------------------------------------
+// Future<XFile> pickVideo() async {
+//   final ImagePicker picker = ImagePicker();
+//   final XFile? pickedFile = await picker.pickVideo(source: ImageSource.gallery);
+//   return pickedFile!;
+// }
+
+// Future<File?> cropVideo({required XFile? xFile}) async {
+//   final instance = ImageCropper();
+//   final result = await instance.cropVideo(
+//     sourcePath: xFile!.path,
+//     androidUiSettings: AndroidUiSettings(
+//       toolbarTitle: 'Crop Video',
+//       toolbarColor: Colors.green,
+//       initAspectRatio: CropAspectRatioPreset.square,
+//       lockAspectRatio: false,
+//     ),
+//     iosUiSettings: IOSUiSettings(
+//       title: 'Crop Video',
+//     ),
+//   );
+//   return result;
+// }
+
+// --------------------------------------------------------------------------------------
+
 User? returnAuthUser() => FirebaseAuth.instance.currentUser;
 
 DocumentReference<Map<String,dynamic>> userDocToTokenDocRef({

@@ -35,11 +35,11 @@ class CreatePostModel extends ChangeNotifier {
           maxLength: 10,
         ),
       ),
-      title: Text(createPostTitle),
+      title: const Text(createPostTitle),
       // ボタンのメインの動作
       primaryActionBuilder: (context, controller, _) {
         return InkWell(
-          child: Icon(Icons.send),
+          child: const Icon(Icons.send),
           onTap: () async {
             if(textEditingController.text.isNotEmpty) {
               //メインの動作
@@ -56,7 +56,7 @@ class CreatePostModel extends ChangeNotifier {
       // 閉じる時の動作
       negativeActionBuilder: (context, controller, _)  {
         return InkWell(
-          child: Icon(Icons.close),
+          child: const Icon(Icons.close),
           onTap: () async => await controller.dismiss(),
         );
       },

@@ -6,7 +6,7 @@ import 'package:sonanceep_sns/details/rounded_button.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 
 class ReloadScreen extends StatelessWidget {
-  ReloadScreen({
+  const ReloadScreen({
     Key? key,
     required this.onReload,
   }) : super(key: key);
