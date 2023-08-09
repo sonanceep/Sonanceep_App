@@ -17,7 +17,7 @@ import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/views/replies/components/reply_like_button.dart';
 
 class ReplyCard extends ConsumerWidget {
-  ReplyCard({
+  const ReplyCard({
     Key? key,
     required this.onTap,
     required this.comment,
@@ -53,7 +53,7 @@ class ReplyCard extends ConsumerWidget {
               ),
               Text(
                 reply.userName,
-                style: TextStyle(fontSize: 24.0),
+                style: const TextStyle(fontSize: 24.0),
                 overflow: TextOverflow.ellipsis,  //長いコメントは...で省略してくれる
               ),
             ],
@@ -65,10 +65,10 @@ class ReplyCard extends ConsumerWidget {
               children: [
                 Text(
                   reply.reply,
-                  style: TextStyle(fontSize: 24.0),
+                  style: const TextStyle(fontSize: 24.0),
                   overflow: TextOverflow.ellipsis,  //長いコメントは...で省略してくれる
                 ),
-                Expanded(child: SizedBox()),  //空虚なウェジットを作成してスペースを作る
+                const Expanded(child: SizedBox()),  //空虚なウェジットを作成してスペースを作る
                 ReplyLikeButton(
                   mainModel: mainModel,
                   comment: comment,

@@ -14,8 +14,12 @@ final List<BottomNavigationBarItem> bottomNavigationBarElements = [
     label: searchText,
   ),
   const BottomNavigationBarItem(
-    icon: Icon(Icons.article),
-    label: articleText,
+    icon: Icon(Icons.add),
+    label: createText,
+  ),
+  const BottomNavigationBarItem(
+    icon: Icon(Icons.message),
+    label: messageText,
   ),
   const BottomNavigationBarItem(
     icon: Icon(Icons.person),

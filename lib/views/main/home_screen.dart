@@ -36,7 +36,7 @@ class HomeScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final HomeModel homeModel = ref.watch(homeProvider);
-    final CreatePostModel createPostModel = ref.watch(createPostProvider);
+    // final CreatePostModel createPostModel = ref.watch(createPostProvider);
     final postDocs = homeModel.postDocs;
     final RefreshController refreshController = RefreshController();
 
@@ -47,10 +47,10 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text(appTitle),),
       drawer: SNSDrawer(mainModel: mainModel, themeModel: themeModel,),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.new_label),
-        onPressed: () => createPostModel.showPostFlashBar(context: context, mainModel: mainModel),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon(Icons.new_label),
+      //   onPressed: () => createPostModel.showPostFlashBar(context: context, mainModel: mainModel),
+      // ),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(

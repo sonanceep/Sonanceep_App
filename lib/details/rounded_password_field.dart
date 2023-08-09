@@ -5,7 +5,7 @@ import 'package:sonanceep_sns/details/text_field_container.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 
 class RoundedPasswordField extends StatelessWidget {
-  RoundedPasswordField({
+  const RoundedPasswordField({
     Key? key,
     required this.onChanged,
     required this.passwordEditingController,
@@ -34,11 +34,11 @@ class RoundedPasswordField extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           suffix: InkWell(
-            child: obscureText ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
             onTap: toggleIsObscureText,  //アイコンがタップされた時に切り替え
+            child: obscureText ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
           ),
           hintText: passwordText,
-          hintStyle: TextStyle(fontWeight: FontWeight.bold),
+          hintStyle: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
     );

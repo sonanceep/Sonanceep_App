@@ -15,16 +15,16 @@ class UserImage extends StatelessWidget {
   Widget build(BuildContext context) {
     //与えられたUserImageURLが空の時に表示する
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: userImageURL.isEmpty ? 
       Container(
         width: length,
         height: length,
-        child: Icon(Icons.person, size: length,),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.green),
           shape: BoxShape.circle,
         ),
+        child: Icon(Icons.person, size: length,),
       )
       : CircleImage(length: length, image: NetworkImage(userImageURL))
     );
