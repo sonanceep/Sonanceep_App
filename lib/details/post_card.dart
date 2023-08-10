@@ -105,7 +105,7 @@ class PostCard extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                Text(post.text, style: TextStyle(fontSize: 24.0),),
+                Text(post.text, style: const TextStyle(fontSize: 24.0),),
               ],
             ),
           ),
@@ -114,7 +114,7 @@ class PostCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                child: Icon(Icons.comment),
+                child: const Icon(Icons.comment),
                 onTap: () async => await commentsModel.onCommentButtonPressed(context: context, post: post, postDoc: postDoc, mainModel: mainModel),
               ),
               PostLikeButton(mainModel: mainModel, post: post, postsModel: postsModel, postDoc: postDoc),
