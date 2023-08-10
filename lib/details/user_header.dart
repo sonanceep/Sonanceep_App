@@ -23,17 +23,20 @@ class UserHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,  //画面の高さ * 0.5
+      height: MediaQuery.of(context).size.height * 0.3,  //画面の高さ * 0.3
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 48),
-          Row(
-            children: [
-              UserImage(userImageURL: firestoreUser.userImageURL, length: 48.0),
-              Text(firestoreUser.userName, style: const TextStyle(fontSize: 40.0),),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 24.0),
+            child: Row(
+              children: [
+                UserImage(userImageURL: firestoreUser.userImageURL, length: 48.0),
+                Text(firestoreUser.userName, style: const TextStyle(fontSize: 40.0),),
+              ],
+            ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

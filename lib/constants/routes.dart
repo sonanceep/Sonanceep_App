@@ -15,6 +15,7 @@ import 'package:sonanceep_sns/views/auth/update_password_page.dart';
 import 'package:sonanceep_sns/views/auth/verify_email_page.dart';
 import 'package:sonanceep_sns/views/auth/verify_password_reset_page.dart';
 import 'package:sonanceep_sns/views/comments/comments_page.dart';
+import 'package:sonanceep_sns/views/create_post_page.dart';
 import 'package:sonanceep_sns/views/edit_profile_page.dart';
 import 'package:sonanceep_sns/views/finished_page.dart';
 import 'package:sonanceep_sns/views/main/passive_user_profile_page.dart';
@@ -22,6 +23,7 @@ import 'package:sonanceep_sns/views/mute_comments_page.dart';
 import 'package:sonanceep_sns/views/mute_posts_page.dart';
 import 'package:sonanceep_sns/views/mute_replies_page.dart';
 import 'package:sonanceep_sns/views/mute_users_page.dart';
+import 'package:sonanceep_sns/views/post_focus_page.dart';
 import 'package:sonanceep_sns/views/replies/replies_page.dart';
 import 'package:sonanceep_sns/views/signup_page.dart';
 import 'package:sonanceep_sns/views/login_page.dart';
@@ -44,6 +46,10 @@ void toAccountPage({ required BuildContext context, required MainModel mainModel
 void toPassiveUserProfilePage({ required BuildContext context, required DocumentSnapshot<Map<String,dynamic>> passiveUserDoc, required MainModel mainModel}) => Navigator.push(context, MaterialPageRoute(builder: (context) => PassiveUserProfilePage(passiveUserDoc: passiveUserDoc, mainModel: mainModel,)));
 
 void toAdminPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => AdminPage(mainModel: mainModel)));
+
+void toCreatePostPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(mainModel: mainModel,)));
+
+void toPostFocusPage({ required BuildContext context, required Post post }) => Navigator.push(context, MaterialPageRoute(builder: (context) => PostFocusPage(post: post,)));
 
 void toCommentsPage({
   required BuildContext context,

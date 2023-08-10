@@ -10,6 +10,7 @@ import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // components
 import 'package:sonanceep_sns/details/card_container.dart';
+import 'package:sonanceep_sns/details/post_card_contents.dart';
 import 'package:sonanceep_sns/details/user_image.dart';
 import 'package:sonanceep_sns/details/post_like_button.dart';
 // domain
@@ -101,24 +102,24 @@ class PostCard extends ConsumerWidget {
             ],
           ),
           //投稿内容
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                Text(post.text, style: const TextStyle(fontSize: 24.0),),
-              ],
-            ),
+          Column(
+            children: [
+              PostCardContants(length: 400.0, post: post, text: post.text,),
+            ],
           ),
           //いいね、コメント
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              InkWell(
-                child: const Icon(Icons.comment),
-                onTap: () async => await commentsModel.onCommentButtonPressed(context: context, post: post, postDoc: postDoc, mainModel: mainModel),
-              ),
-              PostLikeButton(mainModel: mainModel, post: post, postsModel: postsModel, postDoc: postDoc),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  child: const Icon(Icons.comment),
+                  onTap: () async => await commentsModel.onCommentButtonPressed(context: context, post: post, postDoc: postDoc, mainModel: mainModel),
+                ),
+                PostLikeButton(mainModel: mainModel, post: post, postsModel: postsModel, postDoc: postDoc),
+              ],
+            ),
           ),
         ],
       ),

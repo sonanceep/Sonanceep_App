@@ -27,22 +27,23 @@ class EditProfilePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text(editProfilePageTitle),),
-      body: SingleChildScrollView(  //画面をスクロールできるように？
+      body: SingleChildScrollView(  //画面をスクロールできるように
         child: Column(
           children: [
+            //アイコンを編集
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: InkWell(
                 child: editProfileModel.croppedFile == null ? 
                 UserImage(userImageURL: firestoreUser.userImageURL, length: 180.0)
-                  : ClipRRect(
+                : ClipRRect(
                   borderRadius: BorderRadius.circular(160.0),
                   child: Image.file(editProfileModel.croppedFile!,),// fit: BoxFit.fill, ),
                 ),
                 onTap: () async => await editProfileModel.onImageTapped(),
               ),
             ),
-            //ユーザー名を編集したい
+            //ユーザー名を編集
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 32.0),
               child: RoundedTextField(

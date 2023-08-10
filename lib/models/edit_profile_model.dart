@@ -28,7 +28,7 @@ class EditProfileModel extends ChangeNotifier {
     String userImageURL = '';
     // userNameとcroppedがどっちもnullだったら行う必要ない
     if(!(userName.isEmpty && croppedFile == null)) {
-     // userNameとcroppedFileどっちかの情報がある状態
+      // userNameとcroppedFileどっちかの情報がある状態
       final currentUserDoc = mainModel.currentUserDoc;
       final firestoreUser = mainModel.firestoreUser;
       if(croppedFile != null) {
@@ -79,7 +79,7 @@ class EditProfileModel extends ChangeNotifier {
   // Future
 
   Future<void> onImageTapped() async {
-    final XFile xFile = await returnXFile();
+    final XFile xFile = await returnImageXFile();
     croppedFile = await returnCroppedFile(xFile: xFile);
     notifyListeners();
   }

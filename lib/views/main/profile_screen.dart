@@ -51,7 +51,7 @@ class ProfileScreen extends HookConsumerWidget {
           postDocs.isEmpty ? 
           ReloadScreen(onReload: () async => profileModel.onReload()) :
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,  //画面の高さ * 0.5
+            height: MediaQuery.of(context).size.height * 0.6,  //画面の高さ * 0.6
             child: RefreshScreen(
               onRefresh: () async => profileModel.onRefresh(refreshController),
               onLoading: () async => profileModel.onLoading(refreshController),

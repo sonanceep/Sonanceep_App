@@ -14,7 +14,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 
 // ローカルの画像読み取り ---------------------------------------------------------------
-Future<XFile> returnXFile() async {
+Future<XFile> returnImageXFile() async {
   final ImagePicker picker = ImagePicker();
   final XFile? image = await picker.pickImage(source: ImageSource.gallery);
   return image!;
@@ -40,11 +40,11 @@ Future<File?> returnCroppedFile({ required XFile? xFile }) async {
 // --------------------------------------------------------------------------------------
 
 // ローカルの動画読み取り ---------------------------------------------------------------
-// Future<XFile> pickVideo() async {
-//   final ImagePicker picker = ImagePicker();
-//   final XFile? pickedFile = await picker.pickVideo(source: ImageSource.gallery);
-//   return pickedFile!;
-// }
+Future<XFile> returnVideoXFile() async {
+  final ImagePicker picker = ImagePicker();
+  final XFile? video = await picker.pickVideo(source: ImageSource.gallery);
+  return video!;
+}
 
 // Future<File?> cropVideo({required XFile? xFile}) async {
 //   final instance = ImageCropper();
@@ -62,7 +62,6 @@ Future<File?> returnCroppedFile({ required XFile? xFile }) async {
 //   );
 //   return result;
 // }
-
 // --------------------------------------------------------------------------------------
 
 User? returnAuthUser() => FirebaseAuth.instance.currentUser;

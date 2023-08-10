@@ -2,10 +2,9 @@
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/details/rounded_button.dart';
-import 'package:sonanceep_sns/models/create_post_model.dart';
-import 'package:sonanceep_sns/models/main/create_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 
 class CreateScreen extends ConsumerWidget {
@@ -19,9 +18,6 @@ class CreateScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-    final CreateModel createModel = ref.watch(createProvider);
-    final CreatePostModel createPostModel = ref.watch(createPostProvider);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text(createText),
@@ -31,12 +27,12 @@ class CreateScreen extends ConsumerWidget {
         children: [
           Center(
             child: RoundedButton(
-              onPressed: () => createPostModel.showPostFlashBar(context: context, mainModel: mainModel),
+              onPressed: () => routes.toCreatePostPage(mainModel: mainModel, context: context),
               widthRate: 0.85,
               color: Colors.green,
               text: createPostTitle,
             ),
-          )
+          ),
         ],
       ),
     );
