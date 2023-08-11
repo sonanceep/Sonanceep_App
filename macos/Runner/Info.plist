@@ -28,5 +28,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>アイコンに使用するためカメラライブラリーの使用を許可してください</string>
+	<key>NSCameraUsageDescription</key>
+	<string>アイコンに使用するためカメラの使用を許可してください</string>
 </dict>
 </plist>
