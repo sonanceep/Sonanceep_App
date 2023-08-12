@@ -34,7 +34,7 @@ void showFlashBar({
     // 閉じる時の動作
     negativeActionBuilder: (context, controller, _) {
       return InkWell(
-        child: Icon(Icons.close),
+        child: const Icon(Icons.close),
         onTap: () async => await controller.dismiss(),
       );
     },
