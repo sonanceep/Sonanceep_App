@@ -109,6 +109,8 @@ String returnUuidV4() {
 
 String returnJpgFileName() => '${returnUuidV4()}.jpg';
 
+String returnMp4FileName() => '${returnUuidV4()}.mp4';
+
 String updateEmailLagMsg({required String email}) => "$email('更新が反映されるまで時間がかかる可能性がございます)";
 
 String retrunReportContentString({required List<String> selectedReportContents}) {

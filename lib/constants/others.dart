@@ -2,9 +2,11 @@
 // dart
 import 'dart:io';
 // flutter
+import 'package:chewie/chewie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 // packages
 import 'package:video_player/video_player.dart';
 import 'package:image_picker/image_picker.dart';
@@ -46,22 +48,25 @@ Future<XFile> returnVideoXFile() async {
   return video!;
 }
 
-// Future<File?> cropVideo({required XFile? xFile}) async {
-//   final instance = ImageCropper();
-//   final result = await instance.cropVideo(
-//     sourcePath: xFile!.path,
-//     androidUiSettings: AndroidUiSettings(
-//       toolbarTitle: 'Crop Video',
-//       toolbarColor: Colors.green,
-//       initAspectRatio: CropAspectRatioPreset.square,
-//       lockAspectRatio: false,
-//     ),
-//     iosUiSettings: IOSUiSettings(
-//       title: 'Crop Video',
-//     ),
-//   );
-//   return result;
-// }
+Future<VideoPlayerController> returnVideoController({ required XFile? xFile }) async {
+  final VideoPlayerController controller = VideoPlayerController.file(File(xFile!.path));
+  await controller.initialize();
+  return controller;
+}
+// --------------------------------------------------------------------------------------
+
+// 動画再生時の設定 ---------------------------------------------------------------------
+ChewieController videoPlayerSettings({required String imageURL}) {
+  VideoPlayerController videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(imageURL));
+    ChewieController chewieController = ChewieController(
+      videoPlayerController: videoPlayerController,
+      aspectRatio: 3 / 2,
+      autoPlay: true,
+      looping: true,
+      deviceOrientationsAfterFullScreen: const [DeviceOrientation.portraitUp],  //動画の全画面を閉じた時に縦画面に戻す
+    );
+    return chewieController;
+}
 // --------------------------------------------------------------------------------------
 
 User? returnAuthUser() => FirebaseAuth.instance.currentUser;

@@ -9,6 +9,7 @@ import 'package:sonanceep_sns/models/create_post_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 
 import 'package:sonanceep_sns/models/main/create_model.dart';
+import 'package:video_player/video_player.dart';
 
 class CreatePostPage extends ConsumerWidget {
   const CreatePostPage({
@@ -39,9 +40,10 @@ class CreatePostPage extends ConsumerWidget {
                 child: createPostModel.croppedFile == null ? 
                 const Text('画像、動画を貼り付けよう！')
                 : ClipRRect(
-                  child: Image.file(createPostModel.croppedFile!,),// fit: BoxFit.fill, ),
+                  child: Image.file(createPostModel.croppedFile!,),
                 ),
-                onTap: ()async => await createPostModel.onImageTapped(),
+                // onTap: ()async => await createPostModel.onImageTapped(),
+                onTap: ()async => await createPostModel.onVideoTapped(),
               ),
             ),
             //テキスト
@@ -60,7 +62,7 @@ class CreatePostPage extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
                 child: Center(
-                child: RoundedButton( //プロフィールの更新に必要
+                child: RoundedButton(
                   onPressed: () async => await createPostModel.showPost(context: context, mainModel: mainModel),
                   widthRate: 0.85,
                   color: Colors.green,
