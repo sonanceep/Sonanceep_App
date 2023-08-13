@@ -34,13 +34,13 @@ class PostCardContants extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: imageURL.contains(".mp4") ? 
-          //動画
+          //動画を表示
           AspectRatio(
             aspectRatio: 3 / 2,
             child: Chewie(controller: videoPlayerSettings(imageURL: imageURL)),
           )
           : 
-          //画像
+          //画像を表示
           InkWell(
             onTap: () => routes.toPostFocusPage(context: context, post: post),
             child: Container(
