@@ -22,8 +22,11 @@ class SearchScreen extends StatelessWidget {
       clearQueryOnClose: true,
       body: IndexedStack(
         children: [
-          FloatingSearchBarScrollNotifier(
-            child: child,
+          Padding(
+            padding: const EdgeInsets.only(top: 56.0),
+            child: FloatingSearchBarScrollNotifier(
+              child: child,
+            ),
           ),
         ],
       ),
