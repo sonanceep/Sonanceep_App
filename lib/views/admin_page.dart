@@ -20,18 +20,32 @@ class AdminPage extends ConsumerWidget {
     final AdminModel adminModel = ref.watch(adminProvider);
     final MuteUsersModel muteUsersModel = ref.watch(muteUsersProvider);
     return Scaffold(
-      appBar: AppBar(title: Text(adminTitle),),
+      appBar: AppBar(title: const Text(adminTitle),),
       body:  Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-            child: RoundedButton(
-              onPressed: () async => await adminModel.admin(firestoreUser: mainModel.firestoreUser),  //管理者権限を使用しない場合ここを変更
-              widthRate: 0.85,
-              color: Colors.blue,
-              text: adminTitle,
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Center(
+              child: RoundedButton(
+                onPressed: () async => await adminModel.admin(firestoreUser: mainModel.firestoreUser),  //管理者権限を使用しない場合ここを変更
+                widthRate: 0.85,
+                color: Colors.blue,
+                text: adminTitle,
+              ),
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Center(
+              child: RoundedButton(
+                onPressed: () async => await adminModel.adminAddSounds(firestoreUser: mainModel.firestoreUser),  //管理者権限を使用しない場合ここを変更
+                widthRate: 0.85,
+                color: Colors.purple,
+                text: adminAddSoundsTitle,
+              ),
+            ),
+          ),
         ],
       ),
     );

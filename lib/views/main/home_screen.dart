@@ -58,7 +58,10 @@ class HomeScreen extends HookConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             postDocs.isEmpty ? 
-            ReloadScreen(onReload: () async => await homeModel.onReload()) :
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,  //画面の高さ * 0.8
+              child: ReloadScreen(onReload: () async => await homeModel.onReload())
+            ) :
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.8,  //画面の高さ * 0.8
               child: RefreshScreen(

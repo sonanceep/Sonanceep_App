@@ -29,11 +29,10 @@ class UserSearchModel extends ChangeNotifier {
     }
   }
 
+  // //必要に応じてユーザーを全員取得
   // UserSearchModel() {
   //   init();
   // }
-
-  // //ユーザーを全員取得
   // Future<void> init() async {
   //   final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection('users').limit(30).get();
   //   //取得されたeをJsonの型に直してFirestoreUser.fromJsonで独自に作成したFirestoreUserクラスの配列に格納 ※

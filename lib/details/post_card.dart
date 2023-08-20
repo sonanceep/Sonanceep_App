@@ -49,47 +49,13 @@ class PostCard extends ConsumerWidget {
     final postDoc = postDocs[index];
 
     return CardContainer(
-      onTap: () => voids.showPopup(  //ユーザーをミュートしたい
-        context: context,
-        builder: (BuildContext innerContext) => CupertinoActionSheet(
-          actions: [
-            CupertinoActionSheetAction(
-              isDestructiveAction: true,
-              onPressed: () {
-                Navigator.pop(innerContext);
-                muteUsersModel.showMuteUserDialog(context: context, mainModel: mainModel, passiveUid: post.uid, docs: commentsModel.commentDocs);
-              },
-              child: const Text(muteUserText),
-            ),
-            CupertinoActionSheetAction(
-              isDestructiveAction: true,
-              onPressed: () {
-                Navigator.pop(innerContext);
-                mutePostsModel.showMutePostDialog(context: context, mainModel: mainModel, postDoc: postDoc, postDocs: postDocs);
-              },
-              child: const Text(mutePostText),
-            ),
-            CupertinoActionSheetAction(
-              isDestructiveAction: true,
-              onPressed: () {
-                Navigator.pop(innerContext);
-                postsModel.reportPost(context: context, post: post, postDoc: postDoc);
-              },
-              child: const Text(reportPostText),
-            ),
-            CupertinoActionSheetAction(
-              onPressed: () => Navigator.pop(innerContext),
-              child: const Text(backText),
-            ),
-          ]
-        )
-      ),
+      onTap: () {},
       borderColor: Colors.green,
       child: Column(
         children: [
-          //アイコン
+          //アイコン、名前
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               UserImage(
                 length: 32.0,
@@ -99,6 +65,64 @@ class PostCard extends ConsumerWidget {
                 isMyPost ? firestoreUser.userName : post.userName,
                 style: const TextStyle(fontSize: 24.0),
               ),
+              const Expanded(child: SizedBox()),  //空虚なウェジットを作成してスペースを作る
+              InkWell(
+                child: const Icon(Icons.more_vert),
+                onTap: () => isMyPost ? 
+                voids.showPopup(  //自分の投稿に対して行うポップアップ
+                  context: context,
+                  builder: (BuildContext innerContext) => CupertinoActionSheet(
+                    actions: [
+                      CupertinoActionSheetAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          Navigator.pop(innerContext);
+                          // deletePostModel.deletePostDialog(context: context);
+                        },
+                        child: const Text(deletePostText),
+                      ),
+                      CupertinoActionSheetAction(
+                        onPressed: () => Navigator.pop(innerContext),
+                        child: const Text(backText),
+                      ),
+                    ],
+                  ),
+                ) : voids.showPopup(  //自分以外の投稿に対して行うポップアップ
+                  context: context,
+                  builder: (BuildContext innerContext) => CupertinoActionSheet(
+                    actions: [
+                      CupertinoActionSheetAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          Navigator.pop(innerContext);
+                          muteUsersModel.showMuteUserDialog(context: context, mainModel: mainModel, passiveUid: post.uid, docs: commentsModel.commentDocs);
+                        },
+                        child: const Text(muteUserText),
+                      ),
+                      CupertinoActionSheetAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          Navigator.pop(innerContext);
+                          mutePostsModel.showMutePostDialog(context: context, mainModel: mainModel, postDoc: postDoc, postDocs: postDocs);
+                        },
+                        child: const Text(mutePostText),
+                      ),
+                      CupertinoActionSheetAction(
+                        isDestructiveAction: true,
+                        onPressed: () {
+                          Navigator.pop(innerContext);
+                          postsModel.reportPost(context: context, post: post, postDoc: postDoc);
+                        },
+                        child: const Text(reportPostText),
+                      ),
+                      CupertinoActionSheetAction(
+                        onPressed: () => Navigator.pop(innerContext),
+                        child: const Text(backText),
+                      ),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
           //投稿内容

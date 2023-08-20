@@ -23,7 +23,7 @@ class CreatePostPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final CreatePostModel createPostModel = ref.watch(createPostProvider);
-    final TextEditingController textEditingController = TextEditingController(text: createPostTitle);
+    final TextEditingController textEditingController = TextEditingController(text: createPostText);
 
     return Scaffold(
       appBar: AppBar(
@@ -39,9 +39,10 @@ class CreatePostPage extends ConsumerWidget {
               child: InkWell(
                 child: createPostModel.croppedFile == null ? 
                 const Text('画像、動画を貼り付けよう！')
-                : ClipRRect(
-                  child: Image.file(createPostModel.croppedFile!,),
-                ),
+                : const Text('貼り付け完了！！'),
+                // ClipRRect(
+                //   child: Image.file(createPostModel.croppedFile!,),
+                // ),
                 // onTap: ()async => await createPostModel.onImageTapped(),
                 onTap: ()async => await createPostModel.onVideoTapped(),
               ),
@@ -55,7 +56,7 @@ class CreatePostPage extends ConsumerWidget {
                 controller: textEditingController,
                 borderColor: Colors.black,
                 shadowColor: Colors.red.withOpacity(0.3),
-                hintText: createPostTitle,
+                hintText: createPostText,
               ),
             ),
             //投稿する
@@ -66,7 +67,7 @@ class CreatePostPage extends ConsumerWidget {
                   onPressed: () async => await createPostModel.showPost(context: context, mainModel: mainModel),
                   widthRate: 0.85,
                   color: Colors.green,
-                  text: createPostTitle,
+                  text: createPostText,
                 ),
               ),
             ),

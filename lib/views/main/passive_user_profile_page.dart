@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
+import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // components
 import 'package:sonanceep_sns/details/user_header.dart';
 import 'package:sonanceep_sns/details/post_card.dart';
@@ -61,9 +63,10 @@ class PassiveUserProfilePage extends HookConsumerWidget {
                 passiveUserDoc: passiveUserDoc,
               ),
             ),
+            //投稿
             postDocs.isEmpty ? 
-            ReloadScreen(onReload: () async => passiveUserProfileModel.onReload(passiveUserDoc: passiveUserDoc, muteUids: muteUids, mutePostIds: mainModel.mutePostIds,)) :
-            SizedBox(
+            ReloadScreen(onReload: () async => await passiveUserProfileModel.onReload(passiveUserDoc: passiveUserDoc, muteUids: muteUids, mutePostIds: mainModel.mutePostIds,))
+            : SizedBox(
               height: MediaQuery.of(context).size.height * 0.5,  //画面の高さ * 0.5
               child: RefreshScreen(
                 onRefresh: () async => passiveUserProfileModel.onRefresh(passiveUserDoc: passiveUserDoc, muteUids: muteUids, mutePostIds: mainModel.mutePostIds,),

@@ -30,7 +30,7 @@ class CreateScreen extends ConsumerWidget {
               onPressed: () => routes.toCreatePostPage(mainModel: mainModel, context: context),
               widthRate: 0.85,
               color: Colors.green,
-              text: createPostTitle,
+              text: createPostText,
             ),
           ),
         ],

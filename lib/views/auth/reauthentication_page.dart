@@ -21,9 +21,12 @@ class ReauthenticationPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final TextEditingController textEditingController = TextEditingController(text: accountModel.password);
+    final TextEditingController passwordEditingController = TextEditingController(text: accountModel.password);
+
     return PasswordFieldAndButtonScreen(
       appberTitle: reauthenticationPageTitle,
       buttonText: reauthenticateText,
+      passwordEditingController: passwordEditingController,
       textEditingController: textEditingController,
       toggleObscureText: () => accountModel.toggleIsObscure(),
       shadowColor: Colors.green.withOpacity(0.3),

@@ -10,6 +10,7 @@ class PasswordFieldAndButtonScreen extends StatelessWidget {
     required this.appberTitle,
     required this.buttonText,
     required this.textEditingController,
+    required this.passwordEditingController,
     required this.toggleObscureText,
     required this.shadowColor,
     required this.buttonColor,
@@ -20,6 +21,7 @@ class PasswordFieldAndButtonScreen extends StatelessWidget {
 
   final String appberTitle, buttonText;
   final TextEditingController textEditingController;
+  final TextEditingController passwordEditingController;
   final void Function()? toggleObscureText;
   final Color shadowColor, buttonColor;
   final bool obscureText;

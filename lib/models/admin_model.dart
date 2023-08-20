@@ -24,35 +24,46 @@ final adminProvider = ChangeNotifierProvider(
   ((ref) => AdminModel()
 ));
 
+
+
 //管理者だけにできる処理
 class AdminModel extends ChangeNotifier {
+
+  //管理者がオケをデータベースに保存
+  Future<void> adminAddSounds({
+    required FirestoreUser firestoreUser,
+  }) async {
+    
+  }
+
+
   Future<void> admin({
     // required DocumentSnapshot<Map<String,dynamic>> currentUserDoc,
     required FirestoreUser firestoreUser,
     // required MuteUsersModel muteUsersModel,
   }) async {
 
-    // commentにreportCountを設置
-    final WriteBatch batch = FirebaseFirestore.instance.batch();
-    // posts
-    final postsQshot = await FirebaseFirestore.instance.collectionGroup('posts').get();
-    for(final post in postsQshot.docs) {
-      batch.update(post.reference, {
-        'reportCount': 0,
-      });
-    }
-    // comments全削除
-    final commentsQshot = await FirebaseFirestore.instance.collectionGroup('postComments').get();
-    for(final comment in commentsQshot.docs) {
-      batch.delete(comment.reference);
-    }
-    // replies全削除
-    final repliesQshot = await FirebaseFirestore.instance.collectionGroup('postCommentReplies').get();
-    for(final reply in repliesQshot.docs) {
-      batch.delete(reply.reference);
-    }
-    await batch.commit();
-    await showFlutterToast(msg: '作業が完了しました');
+    // // commentにreportCountを設置
+    // final WriteBatch batch = FirebaseFirestore.instance.batch();
+    // // posts
+    // final postsQshot = await FirebaseFirestore.instance.collectionGroup('posts').get();
+    // for(final post in postsQshot.docs) {
+    //   batch.update(post.reference, {
+    //     'reportCount': 0,
+    //   });
+    // }
+    // // comments全削除
+    // final commentsQshot = await FirebaseFirestore.instance.collectionGroup('postComments').get();
+    // for(final comment in commentsQshot.docs) {
+    //   batch.delete(comment.reference);
+    // }
+    // // replies全削除
+    // final repliesQshot = await FirebaseFirestore.instance.collectionGroup('postCommentReplies').get();
+    // for(final reply in repliesQshot.docs) {
+    //   batch.delete(reply.reference);
+    // }
+    // await batch.commit();
+    // await showFlutterToast(msg: '作業が完了しました');
 
 
 

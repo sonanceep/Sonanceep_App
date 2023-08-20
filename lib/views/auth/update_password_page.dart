@@ -16,11 +16,13 @@ class UpdatePasswordPage extends ConsumerWidget {
 
     final UpdatePasswordModel updatePasswordModel = ref.watch(updatePasswordProvider);
     final TextEditingController textEditingController = TextEditingController(text: updatePasswordModel.newPassword);
+    final TextEditingController passwordEditingController = TextEditingController(text: updatePasswordModel.newPassword);
 
     return PasswordFieldAndButtonScreen(
       appberTitle: updatePasswordPageTitle,
       buttonText: updatePasswordText,
       textEditingController: textEditingController,
+      passwordEditingController: passwordEditingController,
       toggleObscureText: () => updatePasswordModel.toggleIsObscure(),
       shadowColor: Colors.green.withOpacity(0.3),
       buttonColor: Colors.orange.withOpacity(0.5),
