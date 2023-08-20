@@ -685,7 +685,7 @@ exports.onUserUpdateLogCreate = functions.firestore.document('users/{uid}/userUp
 //---------------------------------------------------------------------------------------------------------
 
 
-//  -------------------------------------------------------------------------------
+//投稿を作成  ---------------------------------------------------------------------------------------------
 exports.onPostCreate = functions.firestore.document('users/{uid}/posts/{postId}').onCreate(
     async (snap,_) => {  // snapにはデータが入っている
         const newValue = snap.data();
@@ -751,28 +751,28 @@ exports.onPostCreate = functions.firestore.document('users/{uid}/posts/{postId}'
             'postCreatorUid': newValue.uid,
             'postId': newValue.postId,
         };
-        // //自分のタイムラインに自分の投稿をセットする
+        //自分のタイムラインに自分の投稿をセットする
         myBatch.set(myRef.collection('timelines').doc(newValue.postId), timeline);
         await myBatch.commit();
 
-        // // followersをget
-        // const followers = await fireStore.collection('users').doc(newValue.uid).collection('followers').get();
-        // let count = 0;
-        // let batch = fireStore.batch();
-        // for(const follower of followers.docs) {
-        //     const data = follower.data();
-        //     const ref = fireStore.collection('users').doc(data.followerUid).collection('timelines').doc(newValue.postId);  // followerのtimelineを作成
-        //     batch.set(ref, timeline);
-        //     count++;
-        //     if(count == batchLimit) {
-        //         await batch.commit();
-        //         batch = fireStore.batch();
-        //         count = 0;
-        //     }
-        // }
-        // if(count > 0) {
-        //     await batch.commit();
-        // }
+        // followersをget
+        const followers = await fireStore.collection('users').doc(newValue.uid).collection('followers').get();
+        let count = 0;
+        let batch = fireStore.batch();
+        for(const follower of followers.docs) {
+            const data = follower.data();
+            const ref = fireStore.collection('users').doc(data.followerUid).collection('timelines').doc(newValue.postId);  // followerのtimelineを作成
+            batch.set(ref, timeline);
+            count++;
+            if(count == batchLimit) {
+                await batch.commit();
+                batch = fireStore.batch();
+                count = 0;
+            }
+        }
+        if(count > 0) {
+            await batch.commit();
+        }
     }
 );
 
