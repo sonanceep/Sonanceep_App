@@ -12,6 +12,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
 // models
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';
@@ -92,6 +93,7 @@ class MyHomePage extends HookConsumerWidget {
 
   @override  //上書きする  今回はbuild関数
   Widget build(BuildContext context,WidgetRef ref) {
+    final PassiveUserProfileModel passiveUserProfileModel = ref.watch(passiveUserProfileProvider);
     final MainModel mainModel = ref.watch(mainProvider);
     // lib/models/sns_bottom_navigation_bar_model.dart と lib/details/sns_bottom_navigation_bar.dart を削除
     // final SNSBottomNavigationBarModel snsBottomNavigationBarModel = ref.watch(snsBottomNavigationBarProvider);

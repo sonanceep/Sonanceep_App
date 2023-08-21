@@ -80,6 +80,7 @@ const String maxSearchLengthMsg= '検索できるのは100文字までです';
 const String aliceName = 'Alice';
 // FieldKey
 const String usersFieldKey = 'users';
+const String roomsFieldKey = 'rooms';
 // message
 const String userCreatedMsg = 'ユーザーが作成できました';
 const String noAccountMsg = 'アカウントをお持ちでない場合';

@@ -1,6 +1,7 @@
 // flutter
 import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
+import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
 import 'package:sonanceep_sns/models/themes_model.dart';
 // packages
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -73,7 +74,7 @@ class HomeScreen extends HookConsumerWidget {
                   itemBuilder: (BuildContext context, int index) {
                     final postDoc = postDocs[index];
                     final Post post = Post.fromJson(postDoc.data()!);
-                    return PostCard(post: post, postDocs: postDocs, index: index, mainModel: mainModel);
+                    return PostCard(post: post, postDocs: postDocs, index: index, mainModel: mainModel,);
                   },
                 ),
               ),

@@ -19,6 +19,7 @@ import 'package:sonanceep_sns/views/create_post_page.dart';
 import 'package:sonanceep_sns/views/edit_profile_page.dart';
 import 'package:sonanceep_sns/views/finished_page.dart';
 import 'package:sonanceep_sns/views/main/passive_user_profile_page.dart';
+import 'package:sonanceep_sns/views/message/message_page.dart';
 import 'package:sonanceep_sns/views/mute_comments_page.dart';
 import 'package:sonanceep_sns/views/mute_posts_page.dart';
 import 'package:sonanceep_sns/views/mute_replies_page.dart';
@@ -74,6 +75,8 @@ void toRepliesPage({
 )));
 
 void toEditProfilePage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage(mainModel: mainModel)));
+
+void toMessagePage({ required BuildContext context, required FirestoreUser passiveUser }) => Navigator.push(context, MaterialPageRoute(builder: (context) => MessagePage(passiveUser: passiveUser,)));
 
 void toMuteUsersPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => MuteUsersPage(mainModel: mainModel)));
 

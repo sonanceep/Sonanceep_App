@@ -36,17 +36,43 @@ class UserButton extends ConsumerWidget {
       text: editProfileText,
     )
     : mainModel.followingUids.contains(passiveUid) ?
-    RoundedButton(
-      onPressed: () async => await passiveUserProfileModel.unfollow(mainModel: mainModel, passiveUser: passiveUser),
-      widthRate: 0.85,
-      color: Colors.red,
-      text: "アンフォロー"
-    )
-    : RoundedButton(
-      onPressed: () async => await passiveUserProfileModel.follow(mainModel: mainModel, passiveUser: passiveUser),
-      widthRate: 0.85,
-      color: Colors.green,
-      text: "フォロー"
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          flex: 1, // 横幅の半分のスペース
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RoundedButton(
+              onPressed: () async => await passiveUserProfileModel.unfollow(mainModel: mainModel, passiveUser: passiveUser),
+              widthRate: 0.85,
+              color: Colors.red,
+              text: "アンフォロー",
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1, // 横幅の半分のスペース
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RoundedButton(
+              onPressed: () => routes.toMessagePage(context: context, passiveUser: passiveUser),
+              widthRate: 0.85,
+              color: Colors.blueGrey,
+              text: "メッセージ",
+            ),
+          ),
+        ),
+      ],
+    ) 
+    : Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: RoundedButton(
+        onPressed: () async => await passiveUserProfileModel.follow(mainModel: mainModel, passiveUser: passiveUser),
+        widthRate: 0.85,
+        color: Colors.green,
+        text: "フォロー",
+      ),
     );
   }
 }

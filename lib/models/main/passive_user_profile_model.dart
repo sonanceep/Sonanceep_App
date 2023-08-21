@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/constants/enums.dart';
+import 'package:sonanceep_sns/domain/created_rooms/created_rooms.dart';
+import 'package:sonanceep_sns/domain/firestore_room/firestore_room.dart';
+import 'package:sonanceep_sns/models/main/message_model.dart';
 import 'package:sonanceep_sns/views/main/passive_user_profile_page.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 // constants
@@ -112,6 +115,9 @@ class PassiveUserProfileModel extends ChangeNotifier {
     //   // Firestore上の値に+1
     //   'followerCount': FieldValue.increment(1),  //フロントエンド側がデータベースに関わってこないので安全になる
     // });
+
+    //個人チャットルームを作成する
+    createRoom(mainModel: mainModel, activeUid : activeUser.uid, passiveUid : passiveUser.uid);
   }
 
   Future<void> unfollow({required MainModel mainModel, required FirestoreUser passiveUser}) async {
@@ -144,6 +150,40 @@ class PassiveUserProfileModel extends ChangeNotifier {
     //   // Firestore上の値に-1
     //   'followerCount': FieldValue.increment(-1),  //フロントエンド側がデータベースに関わってこないので安全になる
     // });
+  }
+
+  Future<void> createRoom({ required MainModel mainModel, required String activeUid, required String passiveUid }) async {
+    final String roomId = returnUuidV4();
+    final firestoreInstance = FirebaseFirestore.instance;
+    final currentUserDoc = mainModel.currentUserDoc;
+    final passiveUserDoc = await FirebaseFirestore.instance.collection(usersFieldKey).doc(passiveUid).get();
+    //クラス化されたjson形式の取得
+    final Timestamp now = Timestamp.now();
+    final FirestoreRoom firestoreRoom = FirestoreRoom(
+      createdAt: now,
+      joinedUserIds: [activeUid, passiveUid],
+      roomId: roomId,
+      lastMessage: '',
+    );
+    // Cloud Firestore に格納
+    await firestoreInstance.collection(roomsFieldKey).doc(roomId).set(firestoreRoom.toJson());
+
+    notifyListeners();
+    final CreatedRooms activeSideCreatedRooms = CreatedRooms(
+      createdAt: now,
+      talkUserId: passiveUid,
+      roomId: roomId,
+    );
+    final CreatedRooms passiveSideCreatedRooms = CreatedRooms(
+      createdAt: now,
+      talkUserId: activeUid,
+      roomId: roomId,
+    );
+    // Cloud Firestore に格納
+    await currentUserDoc.reference.collection('createdRooms').doc(roomId).set(activeSideCreatedRooms.toJson());
+    await passiveUserDoc.reference.collection('createdRooms').doc(roomId).set(passiveSideCreatedRooms.toJson());
+    //ルーム作成完了のバナー
+    await voids.showFlutterToast(msg: "ルームの作成に成功！");
   }
 
   void onMenuPressed({

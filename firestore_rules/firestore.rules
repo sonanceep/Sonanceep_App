@@ -13,6 +13,9 @@ service cloud.firestore {
     match /deleteUsers/{uid} {
       allow create: if isTheSameUserAndVerified(uid) && isValidUser(request.resource.data, uid);
     }
+    match /rooms/{uid} {
+      allow create: if isAuthenticatedAndVerified();
+    }
     match /users/{uid} {
       allow read: if isAuthenticatedAndVerified();
       allow update: if isAdmin();
@@ -92,7 +95,7 @@ service cloud.firestore {
     return ( request.auth.uid == uid && isEmailVerifed() );
   }
   function isAdmin() {
-    return request.auth.uid == 'kl4kq0vIrYcd76n4XYi2V74VbOj1';
+    return request.auth.uid == 'p40gFwN3GhZiehODwdea7sbDIE63';
   }
   //メールアドレスを認証していないユーザーがFirestoreにdocumentを作成するのを制限するルール
   function isEmailVerifed() {

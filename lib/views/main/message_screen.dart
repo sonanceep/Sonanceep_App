@@ -1,4 +1,5 @@
 // flutter
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,13 @@ class MessageScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text(messageText),
       ),
+      body: const Text("フォローをしてメッセージを送ってみよう！！")
+      // StreamBuilder<QuerySnapshot>(
+      //   stream: MessageModel.joinedRoomSnapshot,
+      //   builder: (context, streamSnapshot) {
+
+      //   }
+      // ),
     );
   }
 }

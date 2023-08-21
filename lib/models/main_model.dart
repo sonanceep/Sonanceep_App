@@ -59,8 +59,9 @@ class MainModel extends ChangeNotifier {
     startLoading();
     // modelを跨がないでcurrentUserの更新
     currentUser = FirebaseAuth.instance.currentUser;
-    // slxg2YbgoTYBTQzDR8Msv9oOobX2
+    // p40gFwN3GhZiehODwdea7sbDIE63
     currentUserDoc = await FirebaseFirestore.instance.collection(usersFieldKey).doc(currentUser!.uid).get();
+    // voids.showFlutterToast(msg: currentUserDoc.toString());
     await distributeTokens();
     firestoreUser = FirestoreUser.fromJson(currentUserDoc.data()!);
     // currentUserのuidの取得が可能になった

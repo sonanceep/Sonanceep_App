@@ -8,7 +8,7 @@ import 'package:sonanceep_sns/domain/post/post.dart';
 import 'package:sonanceep_sns/models/posts_model.dart';
 
 class PostLikeButton extends StatelessWidget {
-  PostLikeButton({
+  const PostLikeButton({
     Key? key,
     required this.mainModel,
     required this.post,

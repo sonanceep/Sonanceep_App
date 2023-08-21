@@ -18,6 +18,8 @@ import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';
 // models
 import 'package:sonanceep_sns/models/comments_model.dart';
+import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
+import 'package:sonanceep_sns/models/main/user_search_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_posts_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';
@@ -46,6 +48,7 @@ class PostCard extends ConsumerWidget {
     final CommentsModel commentsModel = ref.watch(commentsProvider);
     final MuteUsersModel muteUsersModel = ref.watch(muteUsersProvider);
     final MutePostsModel mutePostsModel = ref.watch(mutePostsProvider);
+    final PassiveUserProfileModel passiveUserProfileModel = ref.watch(passiveUserProfileProvider);
     final postDoc = postDocs[index];
 
     return CardContainer(
@@ -57,9 +60,12 @@ class PostCard extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              UserImage(
-                length: 32.0,
-                userImageURL: isMyPost ? firestoreUser.userImageURL : post.userImageURL,
+              InkWell(
+                onTap: () async => await passiveUserProfileModel.onUserIconPressed(context: context, mainModel: mainModel, passiveUserDoc: postDoc,),
+                child: UserImage(
+                  length: 32.0,
+                  userImageURL: isMyPost ? firestoreUser.userImageURL : post.userImageURL,
+                ),
               ),
               Text(
                 isMyPost ? firestoreUser.userName : post.userName,
