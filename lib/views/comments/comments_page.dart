@@ -101,7 +101,7 @@ class CommentsPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orange,
-        child: Icon(Icons.new_label,),
+        child: const Icon(Icons.new_label,),
         onPressed: () => commentsModel.showCommentFlashBar(context: context, mainModel: mainModel, postDoc: postDoc),
       ),
     );
