@@ -15,14 +15,14 @@ bool isValidComment({required List<String> muteUids, required Comment comment}) 
 bool isValidReply({required List<String> muteReplyIds, required Reply reply}) => !muteReplyIds.contains(reply.postCommentReplyId);
 
 bool messageIsMine({
-    required MainModel mainModel,
-    required AsyncSnapshot<QuerySnapshot> snapshot,
-    required int index,
-    // required String senderId,
-  }) {
-    final doc = snapshot.data!.docs[index];
-    final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;  //型変換
-    final currentUserDoc = mainModel.currentUserDoc;
-    final String activeUid = currentUserDoc.id;
-    return activeUid == data['senderId'] ? true : false;
-  }
+  required MainModel mainModel,
+  required AsyncSnapshot<QuerySnapshot> snapshot,
+  required int index,
+  // required String senderId,
+}) {
+  final doc = snapshot.data!.docs[index];
+  final Map<String, dynamic> data = doc.data() as Map<String, dynamic>;  //型変換
+  final currentUserDoc = mainModel.currentUserDoc;
+  final String activeUid = currentUserDoc.id;
+  return activeUid == data['senderId'] ? true : false;
+}
