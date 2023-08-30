@@ -64,53 +64,6 @@ class CreatePostModel extends ChangeNotifier {
         text = '';
       }
     }
-
-
-
-
-
-    // showDialog(
-    //   context: context,
-    //   builder: (BuildContext context) {
-    //     final textEditingController = TextEditingController();
-    //     return AlertDialog(
-    //       title: const Text(createPostTitle),
-    //       content: Form(
-    //         child: TextFormField(
-    //           controller: textEditingController,
-    //           style: const TextStyle(fontWeight: FontWeight.bold),
-    //           maxLength: 10,
-    //         ),
-    //       ),
-    //       actions: [
-    //         TextButton(
-    //           onPressed: () async => await onImageTapped(),
-    //           child: const Icon(Icons.link),
-    //         ),
-    //         //送信
-    //         TextButton(
-    //           onPressed: () async {
-    //             if(textEditingController.text.isNotEmpty) {
-    //               //メインの動作
-    //               await createPost(mainModel: mainModel);
-    //               Navigator.pop(context);
-    //             } else {
-    //               //何もしない
-    //               Navigator.pop(context);
-    //             }
-    //           },
-    //           child: const Icon(Icons.send),
-    //         ),
-    //         //閉じる
-    //         TextButton(
-    //           onPressed: () async => Navigator.pop(context),
-    //           child: const Icon(Icons.close),
-    //         ),
-    //       ],
-    //       insetPadding: const EdgeInsets.all(20),
-    //     );
-    //   },
-    // );
   }
 
   Future<void> createPost({required MainModel mainModel, required BuildContext context}) async {

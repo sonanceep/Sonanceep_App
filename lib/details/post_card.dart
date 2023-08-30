@@ -62,9 +62,12 @@ class PostCard extends ConsumerWidget {
             children: [
               InkWell(
                 onTap: () async => await passiveUserProfileModel.onUserIconPressed(context: context, mainModel: mainModel, passiveUserDoc: postDoc,),
-                child: UserImage(
-                  length: 32.0,
-                  userImageURL: isMyPost ? firestoreUser.userImageURL : post.userImageURL,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: UserImage(
+                    length: 32.0,
+                    userImageURL: isMyPost ? firestoreUser.userImageURL : post.userImageURL,
+                  ),
                 ),
               ),
               Text(

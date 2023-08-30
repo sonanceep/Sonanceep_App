@@ -33,7 +33,10 @@ class UserHeader extends StatelessWidget {
             padding: const EdgeInsets.only(left: 24.0),
             child: Row(
               children: [
-                UserImage(userImageURL: firestoreUser.userImageURL, length: 48.0),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: UserImage(userImageURL: firestoreUser.userImageURL, length: 48.0),
+                ),
                 Text(firestoreUser.userName, style: const TextStyle(fontSize: 40.0),),
               ],
             ),

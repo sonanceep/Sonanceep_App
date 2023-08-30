@@ -76,7 +76,7 @@ void toRepliesPage({
 
 void toEditProfilePage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfilePage(mainModel: mainModel)));
 
-void toMessagePage({ required BuildContext context, required FirestoreUser passiveUser }) => Navigator.push(context, MaterialPageRoute(builder: (context) => MessagePage(passiveUser: passiveUser,)));
+void toMessagePage({ required BuildContext context, required MainModel mainModel, required FirestoreUser passiveUser }) => Navigator.push(context, MaterialPageRoute(builder: (context) => MessagePage(mainModel: mainModel, passiveUser: passiveUser,)));
 
 void toMuteUsersPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => MuteUsersPage(mainModel: mainModel)));
 

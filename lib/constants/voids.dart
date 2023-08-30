@@ -16,7 +16,7 @@ void showFlashBar({
     required MainModel mainModel,
     required TextEditingController textEditingController,
     required void Function(String)? onChanged,
-    required String titleString,
+    // required String titleString,
     required Color primaryActionColor,
     required Widget Function(BuildContext, FlashController<Object?>, void Function(void Function()))? primaryActionBuilder,
   }) {
@@ -29,7 +29,7 @@ void showFlashBar({
         maxLength: 10,
       ),
     ),
-    title: Text(titleString),
+    // title: Text(titleString),
     primaryActionBuilder: primaryActionBuilder,
     // 閉じる時の動作
     negativeActionBuilder: (context, controller, _) {

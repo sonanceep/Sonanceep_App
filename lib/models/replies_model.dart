@@ -104,7 +104,7 @@ class RepliesModel extends ChangeNotifier {
       mainModel: mainModel,
       textEditingController: textEditingController,
       onChanged: (value) => replyString = value,
-      titleString: createReplyText,
+      // titleString: createReplyText,
       primaryActionColor: Colors.purple,
       primaryActionBuilder: (_, controller, __) {
         return InkWell(

@@ -1,6 +1,8 @@
 // package
 import 'package:flutter/material.dart';
+import 'package:sonanceep_sns/domain/message/message.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart' as intel;
 
 // titles
 const String appTitle = 'SNS';
@@ -115,6 +117,33 @@ String returnUuidV4() {
 String returnJpgFileName() => '${returnUuidV4()}.jpg';
 
 String returnMp4FileName() => '${returnUuidV4()}.mp4';
+
+String returnRoomId({required String activeUid, required String passiveUid}) {
+  List<String> dictionaryOrderList = [activeUid, passiveUid];
+  dictionaryOrderList.sort((a, b) => a.compareTo(b));
+  return dictionaryOrderList.join("-");
+}
+
+String returnMessageTime({required Message message}) {
+  return intel.DateFormat('HH:mm').format(message.createdAt.toDate());
+}
+
+String returnMessageDate({required Message message}) {
+  DateTime date = message.createdAt.toDate();
+  if(date.month >= 1 && date.month <= 9) {
+    if(date.day >= 1 && date.day <= 9) {
+      return intel.DateFormat('M / d').format(message.createdAt.toDate());
+    } else {
+      return intel.DateFormat('M / dd').format(message.createdAt.toDate());
+    }
+  } else {
+    if(date.day >= 1 && date.day <= 9) {
+      return intel.DateFormat('MM / d').format(message.createdAt.toDate());
+    } else {
+      return intel.DateFormat('MM / dd').format(message.createdAt.toDate());
+    }
+  }
+}
 
 String updateEmailLagMsg({required String email}) => "$email('更新が反映されるまで時間がかかる可能性がございます)";
 

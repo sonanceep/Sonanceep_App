@@ -106,7 +106,7 @@ class CommentsModel extends ChangeNotifier {
       mainModel: mainModel,
       textEditingController: textEditingController,
       onChanged: (value) => commentString = value,
-      titleString: createCommentText,
+      // titleString: createCommentText,
       primaryActionColor: Colors.orange,
       primaryActionBuilder: (_, controller, __) {
         return InkWell(

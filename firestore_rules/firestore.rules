@@ -13,8 +13,14 @@ service cloud.firestore {
     match /deleteUsers/{uid} {
       allow create: if isTheSameUserAndVerified(uid) && isValidUser(request.resource.data, uid);
     }
-    match /rooms/{uid} {
+    match /rooms/{roomId} {
+      allow read: if isAuthenticatedAndVerified();
+      allow update: if isAuthenticatedAndVerified();
       allow create: if isAuthenticatedAndVerified();
+      match /message/{messageId} {
+        allow read: if isAuthenticatedAndVerified();
+        allow create: if isAuthenticatedAndVerified();
+      }
     }
     match /users/{uid} {
       allow read: if isAuthenticatedAndVerified();
@@ -37,6 +43,9 @@ service cloud.firestore {
       //架空のユーザーをフォローできないように
       match /followers/{followerUid} {
         allow create, delete: if isTheSameUserAndVerified(followerUid);
+      }
+      match /createdRooms/{roomId} {
+        allow read, create: if true;  //本人と相手のみに変更 TODO
       }
       match /posts/{postId} {
         allow read: if isAuthenticatedAndVerified();
