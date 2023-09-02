@@ -94,10 +94,7 @@ class MessageScreen extends ConsumerWidget {
                                           mainAxisAlignment: MainAxisAlignment.center,  //縦中央寄せ
                                           children: [
                                             Text(passiveUsers[index].userName, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                            // talkRooms[index].lastMessage != null
-                                            // ? Text(talkRooms[index].lastMessage, overflow: TextOverflow.clip, style: const TextStyle(color: Colors.grey)) : const Text(''),
                                             SizedBox(
-                                              // height: 40,
                                               width: 300,
                                               child: Text(talkRooms[index].lastMessage, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.grey)),
                                             ),
