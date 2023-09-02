@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sonanceep_sns/constants/colors.dart';
 import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/details/user_image.dart';
@@ -83,7 +84,7 @@ class MessageScreen extends ConsumerWidget {
                                         ),
                                       ),
                                       const Divider(
-                                        color: Color.fromARGB(40, 158, 158, 158),
+                                        color: dividerColor,
                                         thickness: 1.0,
                                       ),
                                     ],
