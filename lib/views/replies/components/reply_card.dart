@@ -47,9 +47,12 @@ class ReplyCard extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              UserImage(
-                length: 32.0,
-                userImageURL: reply.userImageURL,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: UserImage(
+                  length: 32.0,
+                  userImageURL: reply.userImageURL,
+                ),
               ),
               Text(
                 reply.userName,

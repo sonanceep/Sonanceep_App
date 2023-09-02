@@ -50,9 +50,12 @@ class CommentCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              UserImage(
-                length: 32.0,
-                userImageURL: isMyComment ? firestoreUser.userImageURL : comment.userImageURL,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: UserImage(
+                  length: 32.0,
+                  userImageURL: isMyComment ? firestoreUser.userImageURL : comment.userImageURL,
+                ),
               ),
               Text(
                 isMyComment ? firestoreUser.userName : comment.userName,
