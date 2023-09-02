@@ -76,35 +76,38 @@ class MessageScreen extends ConsumerWidget {
                         } else {
                           if(passiveUserFutureSnapshot.hasData) {
                             final List<FirestoreUser> passiveUsers = passiveUserFutureSnapshot.data!;
-                            return ListView.builder(  //メイン操作画面
-                              itemCount: talkRooms.length,  //トークにいるユーザーの人数
-                              itemBuilder: (context, index) {
-                                return InkWell(
-                                  onTap: () => routes.toMessagePage(context: context, mainModel: mainModel, passiveUser: passiveUsers[index]),
-                                  child: SizedBox(  //リストを出力している
-                                    height: 70,
-                                    child: Row(  //横並び
-                                      children: [
-                                        Padding(  //指定箇所に余白
-                                          padding: const EdgeInsets.symmetric(horizontal: 8.0),  //上下に同じ分の余白
-                                          child: UserImage(userImageURL: passiveUsers[index].userImageURL, length: 48.0),
-                                        ),
-                                        Column(  //縦並び
-                                          crossAxisAlignment: CrossAxisAlignment.start,  //左寄せ
-                                          mainAxisAlignment: MainAxisAlignment.center,  //縦中央寄せ
-                                          children: [
-                                            Text(passiveUsers[index].userName, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                            SizedBox(
-                                              width: 300,
-                                              child: Text(talkRooms[index].lastMessage, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.grey)),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
+                            return SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.8,
+                              child: ListView.builder(  //メイン操作画面
+                                itemCount: talkRooms.length,  //トークにいるユーザーの人数
+                                itemBuilder: (context, index) {
+                                  return InkWell(
+                                    onTap: () => routes.toMessagePage(context: context, mainModel: mainModel, passiveUser: passiveUsers[index]),
+                                    child: SizedBox(  //リストを出力している
+                                      height: 70,
+                                      child: Row(  //横並び
+                                        children: [
+                                          Padding(  //指定箇所に余白
+                                            padding: const EdgeInsets.symmetric(horizontal: 8.0),  //上下に同じ分の余白
+                                            child: UserImage(userImageURL: passiveUsers[index].userImageURL, length: 48.0),
+                                          ),
+                                          Column(  //縦並び
+                                            crossAxisAlignment: CrossAxisAlignment.start,  //左寄せ
+                                            mainAxisAlignment: MainAxisAlignment.center,  //縦中央寄せ
+                                            children: [
+                                              Text(passiveUsers[index].userName, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                              SizedBox(
+                                                width: 300,
+                                                child: Text(talkRooms[index].lastMessage, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.grey)),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }
+                                  );
+                                }
+                              ),
                             );
                           } else {
                             return const Center(child: Text('トーク相手の取得に失敗しました'));
