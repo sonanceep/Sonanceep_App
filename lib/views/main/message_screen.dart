@@ -80,9 +80,7 @@ class MessageScreen extends ConsumerWidget {
                               itemCount: talkRooms.length,  //トークにいるユーザーの人数
                               itemBuilder: (context, index) {
                                 return InkWell(
-                                  onTap: () {  //押されたら画面遷移
-                                    routes.toMessagePage(context: context, mainModel: mainModel, passiveUser: passiveUsers[index]);
-                                  },
+                                  onTap: () => routes.toMessagePage(context: context, mainModel: mainModel, passiveUser: passiveUsers[index]),
                                   child: SizedBox(  //リストを出力している
                                     height: 70,
                                     child: Row(  //横並び
