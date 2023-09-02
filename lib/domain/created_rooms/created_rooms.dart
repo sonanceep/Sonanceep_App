@@ -12,8 +12,9 @@ abstract class CreatedRooms with _$CreatedRooms {
   // ルームを作成したことの印
   const factory CreatedRooms({  // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
     required dynamic createdAt,
-    required String talkUserId,
-    required String roomId,
+    required String talkUid,
+    required String uid,
+    required String talkRoomId,
   }) = _CreatedRooms;
   factory CreatedRooms.fromJson(Map<String,dynamic> json) => _$CreatedRoomsFromJson(json);  //fromJsonと同時にtoJsonもメソッドされる
 }

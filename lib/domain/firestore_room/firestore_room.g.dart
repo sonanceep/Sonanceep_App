@@ -9,17 +9,19 @@ part of 'firestore_room.dart';
 _$_FirestoreRoom _$$_FirestoreRoomFromJson(Map<String, dynamic> json) =>
     _$_FirestoreRoom(
       createdAt: json['createdAt'],
-      joinedUserIds: (json['joinedUserIds'] as List<dynamic>)
+      joinedUsers: (json['joinedUsers'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
-      roomId: json['roomId'] as String,
+      talkRoomId: json['talkRoomId'] as String,
       lastMessage: json['lastMessage'] as String,
+      updateAt: json['updateAt'],
     );
 
 Map<String, dynamic> _$$_FirestoreRoomToJson(_$_FirestoreRoom instance) =>
     <String, dynamic>{
       'createdAt': instance.createdAt,
-      'joinedUserIds': instance.joinedUserIds,
-      'roomId': instance.roomId,
+      'joinedUsers': instance.joinedUsers,
+      'talkRoomId': instance.talkRoomId,
       'lastMessage': instance.lastMessage,
+      'updateAt': instance.updateAt,
     };

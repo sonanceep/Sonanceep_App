@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // packeges
 part 'firestore_room.freezed.dart';
 part 'firestore_room.g.dart';
@@ -9,9 +10,10 @@ part 'firestore_room.g.dart';
 abstract class FirestoreRoom with _$FirestoreRoom {
   const factory FirestoreRoom({  // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
     required dynamic createdAt,  // dynamic型 なんでも許す
-    required List<String> joinedUserIds,
-    required String roomId,
+    required List<String> joinedUsers,
+    required String talkRoomId,
     required String lastMessage,
+    required dynamic updateAt,
   }) = _FirestoreRoom;
   factory FirestoreRoom.fromJson(Map<String,dynamic> json) => _$FirestoreRoomFromJson(json);  //fromJsonと同時にtoJsonもメソッドされる
 }

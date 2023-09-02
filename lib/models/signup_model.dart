@@ -42,6 +42,7 @@ class SignupModel extends ChangeNotifier {
         searchToken: returnSearchToken(searchWords: returnSearchWords(searchTerm: aliceName)),
         postCount: 0,
         muteCount: 0,
+        talkRoomCount: 0,
         userName: aliceName,
         uid: uid,
         userImageURL: '',

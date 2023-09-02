@@ -13,7 +13,7 @@ service cloud.firestore {
     match /deleteUsers/{uid} {
       allow create: if isTheSameUserAndVerified(uid) && isValidUser(request.resource.data, uid);
     }
-    match /rooms/{roomId} {
+    match /rooms/{talkRoomId} {
       allow read: if isAuthenticatedAndVerified();
       allow update: if isAuthenticatedAndVerified();
       allow create: if isAuthenticatedAndVerified();
@@ -44,8 +44,9 @@ service cloud.firestore {
       match /followers/{followerUid} {
         allow create, delete: if isTheSameUserAndVerified(followerUid);
       }
-      match /createdRooms/{roomId} {
-        allow read, create: if true;  //本人と相手のみに変更 TODO
+      match /createdRooms/{talkRoomId} {
+        // allow read, create: if true;  //本人と相手のみに変更 TODO
+        allow read, create, delete: if isAuthenticatedAndVerified();  //本人と相手のみに変更 TODO
       }
       match /posts/{postId} {
         allow read: if isAuthenticatedAndVerified();
@@ -112,7 +113,7 @@ service cloud.firestore {
   }
   //正しいユーザーかデータのスキーマを検証
   function isValidUser(user, uid) {
-    return user.size() == 15 &&   // boolをreturn
+    return user.size() == 16 &&   // boolをreturn
     'createdAt' in user && user.createdAt is timestamp &&  // createdAtがuserのデータの中に入っているかを確認し、user.createdAtがtimestampなのかを確認
     'updatedAt' in user && user.updatedAt is timestamp &&
     'followerCount' in user && user.followerCount is int &&
@@ -121,6 +122,7 @@ service cloud.firestore {
     'muteCount' in user && user.muteCount is int &&
     'searchToken' in user && user.searchToken is map &&
     'postCount' in user && user.postCount is int &&
+    'talkRoomCount' in user && user.talkRoomCount is int &&
     'userName' in user && user.userName is string &&
     'userNameLanguageCode' in user && user.userNameLanguageCode is string &&
     'userNameNegativeScore' in user && user.userNameNegativeScore is number &&

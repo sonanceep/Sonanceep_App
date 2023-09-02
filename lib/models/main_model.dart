@@ -133,7 +133,7 @@ class MainModel extends ChangeNotifier {
         case TokenType.muteReply:
           final MuteReplyToken muteReplyToken = MuteReplyToken.fromJson(tokenMap);
           muteReplyTokens.add(muteReplyToken);
-          mutePostIds.add(muteReplyToken.postCommentReplyId);  //ミュートされる側のID
+          muteReplyIds.add(muteReplyToken.postCommentReplyId);  //ミュートされる側のID
         break;
         case TokenType.mistake:
         break;

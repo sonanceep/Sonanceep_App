@@ -72,7 +72,7 @@ class MyApp extends ConsumerWidget {  // StatelessWidget はウジェット内�
       home: onceUser == null ?   //最初に飛ばす画面を選択
       // //メールアドレス認証識別なし
       // const LoginPage() :   //ユーザーが存在していない
-      // MyHomePage(themeModel: themeModel,),  //ユーザーは存在している
+      // const LoginPage(),  //ユーザーは存在している
 
       // メールアドレス認証識別あり
       const LoginPage() :   //ユーザーが存在していない
@@ -93,7 +93,6 @@ class MyHomePage extends HookConsumerWidget {
 
   @override  //上書きする  今回はbuild関数
   Widget build(BuildContext context,WidgetRef ref) {
-    final PassiveUserProfileModel passiveUserProfileModel = ref.watch(passiveUserProfileProvider);
     final MainModel mainModel = ref.watch(mainProvider);
     // lib/models/sns_bottom_navigation_bar_model.dart と lib/details/sns_bottom_navigation_bar.dart を削除
     // final SNSBottomNavigationBarModel snsBottomNavigationBarModel = ref.watch(snsBottomNavigationBarProvider);
@@ -117,7 +116,7 @@ class MyHomePage extends HookConsumerWidget {
           HomeScreen(mainModel: mainModel, muteUserModel: muteUserModel, themeModel: themeModel,),
           SearchPage(mainModel: mainModel,),
           CreateScreen(mainModel: mainModel,),
-          const MessageScreen(),
+          MessageScreen(mainModel: mainModel),
           ProfileScreen(mainModel: mainModel,),
         ],
       ),

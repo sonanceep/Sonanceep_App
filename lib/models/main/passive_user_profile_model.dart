@@ -117,7 +117,7 @@ class PassiveUserProfileModel extends ChangeNotifier {
     // });
 
     //個人チャットルームを作成する
-    createRoom(mainModel: mainModel, activeUid : activeUser.uid, passiveUid : passiveUser.uid);
+    // createRoom(mainModel: mainModel, passiveUser : passiveUser);
   }
 
   Future<void> unfollow({required MainModel mainModel, required FirestoreUser passiveUser}) async {
@@ -152,48 +152,54 @@ class PassiveUserProfileModel extends ChangeNotifier {
     // });
   }
 
-  Future<void> createRoom({ required MainModel mainModel, required String activeUid, required String passiveUid }) async {
+  // Future<void> createRoom({required MainModel mainModel, required FirestoreUser passiveUser}) async {
 
-    // qshotというデータの塊の存在を取得
-    final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection('users').doc(activeUid).collection('createdRooms').where('talkUserId', isEqualTo: passiveUid).get();
+  //   final DocumentSnapshot<Map<String, dynamic>> currentUserDoc = mainModel.currentUserDoc;
+  //   final String activeUid = currentUserDoc.id;
+  //   final String passiveUid = passiveUser.uid;
+  //   // qshotというデータの塊の存在を取得
+  //   final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection('users').doc(activeUid).collection('createdRooms').where('talkUid', isEqualTo: passiveUid).get();
 
-    //既にルームが作成されているか
-    if(qshot.docs.isEmpty) {
-      final String roomId = returnRoomId(activeUid: activeUid, passiveUid: passiveUid);
-      final firestoreInstance = FirebaseFirestore.instance;
-      final currentUserDoc = mainModel.currentUserDoc;
-      final passiveUserDoc = await FirebaseFirestore.instance.collection(usersFieldKey).doc(passiveUid).get();
-      //クラス化されたjson形式の取得
-      final Timestamp now = Timestamp.now();
-      final FirestoreRoom firestoreRoom = FirestoreRoom(
-        createdAt: now,
-        joinedUserIds: [activeUid, passiveUid],
-        roomId: roomId,
-        lastMessage: '',
-      );
-      // Cloud Firestore に格納
-      await firestoreInstance.collection(roomsFieldKey).doc(roomId).set(firestoreRoom.toJson());
+  //   //既にルームが作成されているか
+  //   if(qshot.docs.isEmpty) {
+  //     final String talkRoomId = returnTalkRoomId(activeUid: activeUid, passiveUid: passiveUid);
+  //     final firestoreInstance = FirebaseFirestore.instance;
+  //     final currentUserDoc = mainModel.currentUserDoc;
+  //     final passiveUserDoc = await FirebaseFirestore.instance.collection(usersFieldKey).doc(passiveUid).get();
+  //     //クラス化されたjson形式の取得
+  //     final Timestamp now = Timestamp.now();
+  //     final FirestoreRoom firestoreRoom = FirestoreRoom(
+  //       createdAt: now,
+  //       joinedUsers: [activeUid, passiveUid],
+  //       talkRoomId: talkRoomId,
+  //       lastMessage: "",
+  //       updateAt: '',
+  //     );
+  //     // Cloud Firestore に格納
+  //     await firestoreInstance.collection(roomsFieldKey).doc(talkRoomId).set(firestoreRoom.toJson());
 
-      notifyListeners();
-      final CreatedRooms activeSideCreatedRooms = CreatedRooms(
-        createdAt: now,
-        talkUserId: passiveUid,
-        roomId: roomId,
-      );
-      final CreatedRooms passiveSideCreatedRooms = CreatedRooms(
-        createdAt: now,
-        talkUserId: activeUid,
-        roomId: roomId,
-      );
-      // Cloud Firestore に格納
-      await currentUserDoc.reference.collection('createdRooms').doc(roomId).set(activeSideCreatedRooms.toJson());
-      await passiveUserDoc.reference.collection('createdRooms').doc(roomId).set(passiveSideCreatedRooms.toJson());
-      //ルーム作成完了のバナー
-      await voids.showFlutterToast(msg: "ルームの作成に成功！");
-    } else {
-      await voids.showFlutterToast(msg: "ルームはもうあるよ！");
-    }
-  }
+  //     notifyListeners();
+  //     final CreatedRooms activeSideCreatedRooms = CreatedRooms(
+  //       createdAt: now,
+  //       talkUid: passiveUid,
+  //       uid: activeUid,
+  //       talkRoomId: talkRoomId,
+  //     );
+  //     final CreatedRooms passiveSideCreatedRooms = CreatedRooms(
+  //       createdAt: now,
+  //       talkUid: activeUid,
+  //       uid: passiveUid,
+  //       talkRoomId: talkRoomId,
+  //     );
+  //     // Cloud Firestore に格納
+  //     await currentUserDoc.reference.collection('createdRooms').doc(talkRoomId).set(activeSideCreatedRooms.toJson());
+  //     await passiveUserDoc.reference.collection('createdRooms').doc(talkRoomId).set(passiveSideCreatedRooms.toJson());
+  //     //ルーム作成完了のバナー
+  //     await voids.showFlutterToast(msg: "ルームの作成に成功！");
+  //   } else {
+  //     await voids.showFlutterToast(msg: "ルームはもうあるよ！");
+  //   }
+  // }
 
   void onMenuPressed({
     required BuildContext context,

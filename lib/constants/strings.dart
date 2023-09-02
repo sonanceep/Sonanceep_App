@@ -118,7 +118,7 @@ String returnJpgFileName() => '${returnUuidV4()}.jpg';
 
 String returnMp4FileName() => '${returnUuidV4()}.mp4';
 
-String returnRoomId({required String activeUid, required String passiveUid}) {
+String returnTalkRoomId({required String activeUid, required String passiveUid}) {
   List<String> dictionaryOrderList = [activeUid, passiveUid];
   dictionaryOrderList.sort((a, b) => a.compareTo(b));
   return dictionaryOrderList.join("-");

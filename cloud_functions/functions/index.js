@@ -553,6 +553,27 @@ exports.onPostCommentReplyDelete = functions.firestore.document('users/{uid}/pos
 //---------------------------------------------------------------------------------------------------------
 
 
+//トークルームが作成されたらカウント  ---------------------------------------------------------------------------------
+exports.onTalkRoomCreate = functions.firestore.document('users/{uid}/createdRooms/{talkRoomId}').onCreate(
+    async (snap,_) => {  // snapにはデータが入っている
+        const newValue = snap.data();
+        await fireStore.collection('users').doc(newValue.uid).update({
+            'talkRoomCount': admin.firestore.FieldValue.increment(plusOne),
+        });
+    }
+);
+
+exports.onTalkRoomDelete = functions.firestore.document('users/{uid}/createdRooms/{talkRoomId}').onDelete(
+    async (snap,_) => {  // snapにはデータが入っている
+        const newValue = snap.data();
+        await fireStore.collection('users').doc(newValue.uid).update({
+            'talkRoomCount': admin.firestore.FieldValue.increment(minusOne),
+        });
+    }
+);
+//---------------------------------------------------------------------------------------------------------
+
+
 //プロフィールの変更でユーザーが余計に変更できないように制限する  -----------------------------------------
 exports.onUserUpdateLogCreate = functions.firestore.document('users/{uid}/userUpdateLogs/{userUpdateLogId}').onCreate(
     async (snap,_) => {  // snapにはデータが入っている

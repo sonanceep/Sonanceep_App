@@ -22,8 +22,9 @@ CreatedRooms _$CreatedRoomsFromJson(Map<String, dynamic> json) {
 mixin _$CreatedRooms {
 // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
   dynamic get createdAt => throw _privateConstructorUsedError;
-  String get talkUserId => throw _privateConstructorUsedError;
-  String get roomId => throw _privateConstructorUsedError;
+  String get talkUid => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
+  String get talkRoomId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,7 @@ abstract class $CreatedRoomsCopyWith<$Res> {
           CreatedRooms value, $Res Function(CreatedRooms) then) =
       _$CreatedRoomsCopyWithImpl<$Res, CreatedRooms>;
   @useResult
-  $Res call({dynamic createdAt, String talkUserId, String roomId});
+  $Res call({dynamic createdAt, String talkUid, String uid, String talkRoomId});
 }
 
 /// @nodoc
@@ -54,21 +55,26 @@ class _$CreatedRoomsCopyWithImpl<$Res, $Val extends CreatedRooms>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? talkUserId = null,
-    Object? roomId = null,
+    Object? talkUid = null,
+    Object? uid = null,
+    Object? talkRoomId = null,
   }) {
     return _then(_value.copyWith(
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      talkUserId: null == talkUserId
-          ? _value.talkUserId
-          : talkUserId // ignore: cast_nullable_to_non_nullable
+      talkUid: null == talkUid
+          ? _value.talkUid
+          : talkUid // ignore: cast_nullable_to_non_nullable
               as String,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      talkRoomId: null == talkRoomId
+          ? _value.talkRoomId
+          : talkRoomId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -82,7 +88,7 @@ abstract class _$$_CreatedRoomsCopyWith<$Res>
       __$$_CreatedRoomsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic createdAt, String talkUserId, String roomId});
+  $Res call({dynamic createdAt, String talkUid, String uid, String talkRoomId});
 }
 
 /// @nodoc
@@ -97,21 +103,26 @@ class __$$_CreatedRoomsCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? talkUserId = null,
-    Object? roomId = null,
+    Object? talkUid = null,
+    Object? uid = null,
+    Object? talkRoomId = null,
   }) {
     return _then(_$_CreatedRooms(
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      talkUserId: null == talkUserId
-          ? _value.talkUserId
-          : talkUserId // ignore: cast_nullable_to_non_nullable
+      talkUid: null == talkUid
+          ? _value.talkUid
+          : talkUid // ignore: cast_nullable_to_non_nullable
               as String,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      talkRoomId: null == talkRoomId
+          ? _value.talkRoomId
+          : talkRoomId // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -122,8 +133,9 @@ class __$$_CreatedRoomsCopyWithImpl<$Res>
 class _$_CreatedRooms with DiagnosticableTreeMixin implements _CreatedRooms {
   const _$_CreatedRooms(
       {required this.createdAt,
-      required this.talkUserId,
-      required this.roomId});
+      required this.talkUid,
+      required this.uid,
+      required this.talkRoomId});
 
   factory _$_CreatedRooms.fromJson(Map<String, dynamic> json) =>
       _$$_CreatedRoomsFromJson(json);
@@ -132,13 +144,15 @@ class _$_CreatedRooms with DiagnosticableTreeMixin implements _CreatedRooms {
   @override
   final dynamic createdAt;
   @override
-  final String talkUserId;
+  final String talkUid;
   @override
-  final String roomId;
+  final String uid;
+  @override
+  final String talkRoomId;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreatedRooms(createdAt: $createdAt, talkUserId: $talkUserId, roomId: $roomId)';
+    return 'CreatedRooms(createdAt: $createdAt, talkUid: $talkUid, uid: $uid, talkRoomId: $talkRoomId)';
   }
 
   @override
@@ -147,8 +161,9 @@ class _$_CreatedRooms with DiagnosticableTreeMixin implements _CreatedRooms {
     properties
       ..add(DiagnosticsProperty('type', 'CreatedRooms'))
       ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('talkUserId', talkUserId))
-      ..add(DiagnosticsProperty('roomId', roomId));
+      ..add(DiagnosticsProperty('talkUid', talkUid))
+      ..add(DiagnosticsProperty('uid', uid))
+      ..add(DiagnosticsProperty('talkRoomId', talkRoomId));
   }
 
   @override
@@ -157,15 +172,16 @@ class _$_CreatedRooms with DiagnosticableTreeMixin implements _CreatedRooms {
         (other.runtimeType == runtimeType &&
             other is _$_CreatedRooms &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            (identical(other.talkUserId, talkUserId) ||
-                other.talkUserId == talkUserId) &&
-            (identical(other.roomId, roomId) || other.roomId == roomId));
+            (identical(other.talkUid, talkUid) || other.talkUid == talkUid) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.talkRoomId, talkRoomId) ||
+                other.talkRoomId == talkRoomId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(createdAt), talkUserId, roomId);
+      const DeepCollectionEquality().hash(createdAt), talkUid, uid, talkRoomId);
 
   @JsonKey(ignore: true)
   @override
@@ -184,8 +200,9 @@ class _$_CreatedRooms with DiagnosticableTreeMixin implements _CreatedRooms {
 abstract class _CreatedRooms implements CreatedRooms {
   const factory _CreatedRooms(
       {required final dynamic createdAt,
-      required final String talkUserId,
-      required final String roomId}) = _$_CreatedRooms;
+      required final String talkUid,
+      required final String uid,
+      required final String talkRoomId}) = _$_CreatedRooms;
 
   factory _CreatedRooms.fromJson(Map<String, dynamic> json) =
       _$_CreatedRooms.fromJson;
@@ -193,9 +210,11 @@ abstract class _CreatedRooms implements CreatedRooms {
   @override // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
   dynamic get createdAt;
   @override
-  String get talkUserId;
+  String get talkUid;
   @override
-  String get roomId;
+  String get uid;
+  @override
+  String get talkRoomId;
   @override
   @JsonKey(ignore: true)
   _$$_CreatedRoomsCopyWith<_$_CreatedRooms> get copyWith =>

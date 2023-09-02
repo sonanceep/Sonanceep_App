@@ -37,7 +37,7 @@ class MessagePage extends ConsumerWidget {
             stream: messageModel.fetchMessageSnapshot(mainModel: mainModel, passiveUser: passiveUser),
             builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if(snapshot.hasError || snapshot.connectionState == ConnectionState.waiting) {
-                return const Text('Loading');
+                return const Center(child: CircularProgressIndicator());
               } else if(!snapshot.hasData) {
                 return const Text("データがありません");
               } else {

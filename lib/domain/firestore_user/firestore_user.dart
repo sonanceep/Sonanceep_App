@@ -16,6 +16,7 @@ abstract class FirestoreUser with _$FirestoreUser {
     required int muteCount,
     required Map<String,dynamic> searchToken,
     required int postCount,
+    required int talkRoomCount,
     required String userName,
     required String userNameLanguageCode,
     required double userNameNegativeScore,

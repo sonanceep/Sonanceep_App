@@ -23,9 +23,10 @@ mixin _$FirestoreRoom {
 // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
   dynamic get createdAt =>
       throw _privateConstructorUsedError; // dynamic型 なんでも許す
-  List<String> get joinedUserIds => throw _privateConstructorUsedError;
-  String get roomId => throw _privateConstructorUsedError;
+  List<String> get joinedUsers => throw _privateConstructorUsedError;
+  String get talkRoomId => throw _privateConstructorUsedError;
   String get lastMessage => throw _privateConstructorUsedError;
+  dynamic get updateAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,9 +42,10 @@ abstract class $FirestoreRoomCopyWith<$Res> {
   @useResult
   $Res call(
       {dynamic createdAt,
-      List<String> joinedUserIds,
-      String roomId,
-      String lastMessage});
+      List<String> joinedUsers,
+      String talkRoomId,
+      String lastMessage,
+      dynamic updateAt});
 }
 
 /// @nodoc
@@ -60,27 +62,32 @@ class _$FirestoreRoomCopyWithImpl<$Res, $Val extends FirestoreRoom>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? joinedUserIds = null,
-    Object? roomId = null,
+    Object? joinedUsers = null,
+    Object? talkRoomId = null,
     Object? lastMessage = null,
+    Object? updateAt = freezed,
   }) {
     return _then(_value.copyWith(
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      joinedUserIds: null == joinedUserIds
-          ? _value.joinedUserIds
-          : joinedUserIds // ignore: cast_nullable_to_non_nullable
+      joinedUsers: null == joinedUsers
+          ? _value.joinedUsers
+          : joinedUsers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
+      talkRoomId: null == talkRoomId
+          ? _value.talkRoomId
+          : talkRoomId // ignore: cast_nullable_to_non_nullable
               as String,
       lastMessage: null == lastMessage
           ? _value.lastMessage
           : lastMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      updateAt: freezed == updateAt
+          ? _value.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -95,9 +102,10 @@ abstract class _$$_FirestoreRoomCopyWith<$Res>
   @useResult
   $Res call(
       {dynamic createdAt,
-      List<String> joinedUserIds,
-      String roomId,
-      String lastMessage});
+      List<String> joinedUsers,
+      String talkRoomId,
+      String lastMessage,
+      dynamic updateAt});
 }
 
 /// @nodoc
@@ -112,27 +120,32 @@ class __$$_FirestoreRoomCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = freezed,
-    Object? joinedUserIds = null,
-    Object? roomId = null,
+    Object? joinedUsers = null,
+    Object? talkRoomId = null,
     Object? lastMessage = null,
+    Object? updateAt = freezed,
   }) {
     return _then(_$_FirestoreRoom(
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      joinedUserIds: null == joinedUserIds
-          ? _value._joinedUserIds
-          : joinedUserIds // ignore: cast_nullable_to_non_nullable
+      joinedUsers: null == joinedUsers
+          ? _value._joinedUsers
+          : joinedUsers // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      roomId: null == roomId
-          ? _value.roomId
-          : roomId // ignore: cast_nullable_to_non_nullable
+      talkRoomId: null == talkRoomId
+          ? _value.talkRoomId
+          : talkRoomId // ignore: cast_nullable_to_non_nullable
               as String,
       lastMessage: null == lastMessage
           ? _value.lastMessage
           : lastMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      updateAt: freezed == updateAt
+          ? _value.updateAt
+          : updateAt // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ));
   }
 }
@@ -142,10 +155,11 @@ class __$$_FirestoreRoomCopyWithImpl<$Res>
 class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
   const _$_FirestoreRoom(
       {required this.createdAt,
-      required final List<String> joinedUserIds,
-      required this.roomId,
-      required this.lastMessage})
-      : _joinedUserIds = joinedUserIds;
+      required final List<String> joinedUsers,
+      required this.talkRoomId,
+      required this.lastMessage,
+      required this.updateAt})
+      : _joinedUsers = joinedUsers;
 
   factory _$_FirestoreRoom.fromJson(Map<String, dynamic> json) =>
       _$$_FirestoreRoomFromJson(json);
@@ -154,23 +168,25 @@ class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
   @override
   final dynamic createdAt;
 // dynamic型 なんでも許す
-  final List<String> _joinedUserIds;
+  final List<String> _joinedUsers;
 // dynamic型 なんでも許す
   @override
-  List<String> get joinedUserIds {
-    if (_joinedUserIds is EqualUnmodifiableListView) return _joinedUserIds;
+  List<String> get joinedUsers {
+    if (_joinedUsers is EqualUnmodifiableListView) return _joinedUsers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_joinedUserIds);
+    return EqualUnmodifiableListView(_joinedUsers);
   }
 
   @override
-  final String roomId;
+  final String talkRoomId;
   @override
   final String lastMessage;
+  @override
+  final dynamic updateAt;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FirestoreRoom(createdAt: $createdAt, joinedUserIds: $joinedUserIds, roomId: $roomId, lastMessage: $lastMessage)';
+    return 'FirestoreRoom(createdAt: $createdAt, joinedUsers: $joinedUsers, talkRoomId: $talkRoomId, lastMessage: $lastMessage, updateAt: $updateAt)';
   }
 
   @override
@@ -179,9 +195,10 @@ class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
     properties
       ..add(DiagnosticsProperty('type', 'FirestoreRoom'))
       ..add(DiagnosticsProperty('createdAt', createdAt))
-      ..add(DiagnosticsProperty('joinedUserIds', joinedUserIds))
-      ..add(DiagnosticsProperty('roomId', roomId))
-      ..add(DiagnosticsProperty('lastMessage', lastMessage));
+      ..add(DiagnosticsProperty('joinedUsers', joinedUsers))
+      ..add(DiagnosticsProperty('talkRoomId', talkRoomId))
+      ..add(DiagnosticsProperty('lastMessage', lastMessage))
+      ..add(DiagnosticsProperty('updateAt', updateAt));
   }
 
   @override
@@ -191,10 +208,12 @@ class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
             other is _$_FirestoreRoom &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
-                .equals(other._joinedUserIds, _joinedUserIds) &&
-            (identical(other.roomId, roomId) || other.roomId == roomId) &&
+                .equals(other._joinedUsers, _joinedUsers) &&
+            (identical(other.talkRoomId, talkRoomId) ||
+                other.talkRoomId == talkRoomId) &&
             (identical(other.lastMessage, lastMessage) ||
-                other.lastMessage == lastMessage));
+                other.lastMessage == lastMessage) &&
+            const DeepCollectionEquality().equals(other.updateAt, updateAt));
   }
 
   @JsonKey(ignore: true)
@@ -202,9 +221,10 @@ class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(_joinedUserIds),
-      roomId,
-      lastMessage);
+      const DeepCollectionEquality().hash(_joinedUsers),
+      talkRoomId,
+      lastMessage,
+      const DeepCollectionEquality().hash(updateAt));
 
   @JsonKey(ignore: true)
   @override
@@ -223,9 +243,10 @@ class _$_FirestoreRoom with DiagnosticableTreeMixin implements _FirestoreRoom {
 abstract class _FirestoreRoom implements FirestoreRoom {
   const factory _FirestoreRoom(
       {required final dynamic createdAt,
-      required final List<String> joinedUserIds,
-      required final String roomId,
-      required final String lastMessage}) = _$_FirestoreRoom;
+      required final List<String> joinedUsers,
+      required final String talkRoomId,
+      required final String lastMessage,
+      required final dynamic updateAt}) = _$_FirestoreRoom;
 
   factory _FirestoreRoom.fromJson(Map<String, dynamic> json) =
       _$_FirestoreRoom.fromJson;
@@ -233,11 +254,13 @@ abstract class _FirestoreRoom implements FirestoreRoom {
   @override // const factory 違うクラスのインスタンスを返すことができるコンストラクタ
   dynamic get createdAt;
   @override // dynamic型 なんでも許す
-  List<String> get joinedUserIds;
+  List<String> get joinedUsers;
   @override
-  String get roomId;
+  String get talkRoomId;
   @override
   String get lastMessage;
+  @override
+  dynamic get updateAt;
   @override
   @JsonKey(ignore: true)
   _$$_FirestoreRoomCopyWith<_$_FirestoreRoom> get copyWith =>
