@@ -19,7 +19,6 @@ final signupProvider = ChangeNotifierProvider(
 ));  // SignupModel()をグローバルに監視できるようになる
 
 class SignupModel extends ChangeNotifier {
-  int counter = 0;
   final User? currentUser = returnAuthUser();
   // auth  email,passwordの変数を作成
   String email = '';
