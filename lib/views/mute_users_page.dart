@@ -52,7 +52,6 @@ class MuteUsersPage extends ConsumerWidget {
                       isDestructiveAction: true,
                       onPressed: () {
                         Navigator.pop(innerContext);
-                        // muteUsersModel.showMuteUserDialog(context: context, mainModel: mainModel, passiveUid: muteFirestoreUser.uid, docs: []);
                         muteUsersModel.showUnMuteUserDialog(context: context, mainModel: mainModel, passiveUid: muteFirestoreUser.uid, muteUserDoc: muteUserDoc);
                       },
                       child: const Text(unMuteUserText),
