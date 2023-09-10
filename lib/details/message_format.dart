@@ -29,7 +29,7 @@ class MessageFormat extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         textDirection: isMine ? TextDirection.rtl : TextDirection.ltr,  //自分は右寄せ、その他は左寄せ
         children: [
-          isMine ? const SizedBox.shrink()  //空虚なウェジットを作成してスペースを作る
+          isMine ? const SizedBox.shrink()
            : Padding(
              padding: const EdgeInsets.only(right: 6.0, bottom: 2.0),
              child: UserImage(userImageURL: passiveUser.userImageURL, length: 32.0),

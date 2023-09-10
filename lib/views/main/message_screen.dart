@@ -74,7 +74,7 @@ class MessageScreen extends ConsumerWidget {
                                                 children: [
                                                   Text(passiveUsers[index].userName, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                                                   SizedBox(
-                                                    width: 300,
+                                                    width: MediaQuery.of(context).size.width * 0.7,
                                                     child: Text(talkRooms[index].lastMessage, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.grey)),
                                                   ),
                                                 ],

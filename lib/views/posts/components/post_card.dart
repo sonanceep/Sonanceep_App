@@ -12,7 +12,7 @@ import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/details/card_container.dart';
 import 'package:sonanceep_sns/details/post_card_contents.dart';
 import 'package:sonanceep_sns/details/user_image.dart';
-import 'package:sonanceep_sns/details/post_like_button.dart';
+import 'package:sonanceep_sns/views/posts/components/post_like_button.dart';
 // domain
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';

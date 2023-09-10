@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:sonanceep_sns/constants/colors.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // components
 import 'package:sonanceep_sns/details/user_header.dart';
-import 'package:sonanceep_sns/details/post_card.dart';
+import 'package:sonanceep_sns/views/posts/components/post_card.dart';
 import 'package:sonanceep_sns/details/reload_screen.dart';
 import 'package:sonanceep_sns/views/refresh_screen.dart';
 // domain
@@ -53,15 +54,22 @@ class PassiveUserProfilePage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            UserHeader(
-              firestoreUser: passiveUser,
-              mainModel: mainModel,
-              onTap: () => passiveUserProfileModel.onMenuPressed(
-                context: context,
-                muteUids: muteUids,
-                mutePostIds: mainModel.mutePostIds,
-                passiveUserDoc: passiveUserDoc,
+            Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: UserHeader(
+                firestoreUser: passiveUser,
+                mainModel: mainModel,
+                onTap: () => passiveUserProfileModel.onMenuPressed(
+                  context: context,
+                  muteUids: muteUids,
+                  mutePostIds: mainModel.mutePostIds,
+                  passiveUserDoc: passiveUserDoc,
+                ),
               ),
+            ),
+            const Divider(
+              color: dividerColor,
+              thickness: 4.0,
             ),
             //投稿
             postDocs.isEmpty ? 

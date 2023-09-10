@@ -1,12 +1,14 @@
 // flutter
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 // packages
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:sonanceep_sns/constants/colors.dart';
 // components
 import 'package:sonanceep_sns/details/user_header.dart';
-import 'package:sonanceep_sns/details/post_card.dart';
+import 'package:sonanceep_sns/views/posts/components/post_card.dart';
 import 'package:sonanceep_sns/details/reload_screen.dart';
 import 'package:sonanceep_sns/views/refresh_screen.dart';
 // models
@@ -46,7 +48,14 @@ class ProfileScreen extends HookConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           //プロフィール部分
-          UserHeader(firestoreUser: firestoreUser, mainModel: mainModel, onTap: () => profileModel.onMenuPressed(context: context),),
+          Padding(
+            padding: const EdgeInsets.only(top: 88.0),
+            child: UserHeader(firestoreUser: firestoreUser, mainModel: mainModel, onTap: () => profileModel.onMenuPressed(context: context),),
+          ),
+          const Divider(
+            color: dividerColor,
+            thickness: 4.0,
+          ),
           //自分の投稿
           postDocs.isEmpty ? 
           ReloadScreen(onReload: () async => profileModel.onReload()) :

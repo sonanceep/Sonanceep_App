@@ -71,14 +71,6 @@ class EditProfileModel extends ChangeNotifier {
     return await storageRef.getDownloadURL();  // Future の場合時間がかかる処理のため await が必要
   }
 
-  // Future<void> onImageTapped() async {
-  //   final XFile xFile = await returnXFile();
-  //   croppedFile = await returnCroppedFile(xFile: xFile);
-  //   notifyListeners();
-  // }
-
-  // Future
-
   Future<void> onImageTapped() async {
     final XFile xFile = await returnImageXFile();
     croppedFile = await returnCroppedFile(xFile: xFile);

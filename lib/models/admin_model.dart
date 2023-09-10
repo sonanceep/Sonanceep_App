@@ -29,14 +29,6 @@ final adminProvider = ChangeNotifierProvider(
 //管理者だけにできる処理
 class AdminModel extends ChangeNotifier {
 
-  //管理者がオケをデータベースに保存
-  Future<void> adminAddSounds({
-    required FirestoreUser firestoreUser,
-  }) async {
-    
-  }
-
-
   Future<void> admin({
     // required DocumentSnapshot<Map<String,dynamic>> currentUserDoc,
     required FirestoreUser firestoreUser,

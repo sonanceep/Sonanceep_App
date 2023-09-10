@@ -810,3 +810,45 @@ exports.onPostDelete = functions.firestore.document('users/{uid}/posts/{postId}'
     }
 );
 //---------------------------------------------------------------------------------------------------------
+
+
+//アルバムが登録されたらカウント  -------------------------------------------------------------------------
+exports.onAlbumCreate = functions.firestore.document('artists/{artistId}/albums/{albumId}').onCreate(
+    async (snap,_) => {  // snapにはデータが入っている
+        const newValue = snap.data();
+        await newValue.artistRef.update({
+            'albumCount': admin.firestore.FieldValue.increment(plusOne),
+        });
+    }
+);
+
+exports.onAlbumDelete = functions.firestore.document('artists/{artistId}/albums/{albumId}').onDelete(
+    async (snap,_) => {  // snapにはデータが入っている
+        const newValue = snap.data();
+        await newValue.artistRef.update({
+            'albumCount': admin.firestore.FieldValue.increment(minusOne),
+        });
+    }
+);
+//---------------------------------------------------------------------------------------------------------
+
+
+//楽曲が登録されたらカウント  -----------------------------------------------------------------------------
+exports.onSongCreate = functions.firestore.document('songs/{songId}').onCreate(
+    async (snap,_) => {  // snapにはデータが入っている
+        const newValue = snap.data();
+        await newValue.artistRef.update({
+            'songCount': admin.firestore.FieldValue.increment(plusOne),
+        });
+    }
+);
+
+exports.onSongDelete = functions.firestore.document('songs/{songId}').onDelete(
+    async (snap,_) => {
+        const newValue = snap.data();
+        await newValue.artistRef.update({
+            'songCount': admin.firestore.FieldValue.increment(minusOne),
+        });
+    }
+);
+//---------------------------------------------------------------------------------------------------------f

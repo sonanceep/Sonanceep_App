@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/details/user_button.dart';
 // components
 import 'package:sonanceep_sns/details/user_image.dart';
-import 'package:sonanceep_sns/details/rounded_button.dart';
 import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
@@ -23,12 +22,11 @@ class UserHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,  //画面の高さ * 0.3
+      height: MediaQuery.of(context).size.height * 0.2,  //画面の高さ * 0.3
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 48),
           Padding(
             padding: const EdgeInsets.only(left: 24.0),
             child: Row(

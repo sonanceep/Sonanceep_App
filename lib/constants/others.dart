@@ -76,12 +76,42 @@ DocumentReference<Map<String,dynamic>> userDocToTokenDocRef({
   required String tokenId,
 }) => currentUserDoc.reference.collection('tokens').doc(tokenId);
 
-Query<Map<String,dynamic>> returnSearchQuery({required List<String> searchWords}) {
-  Query<Map<String,dynamic>> query = FirebaseFirestore.instance.collection('users').limit(30);
+Query<Map<String,dynamic>> returnUserSearchQuery({required List<String> searchWords}) {
+  Query<Map<String,dynamic>> query = FirebaseFirestore.instance.collection(usersFieldKey).limit(30);
   for(final searchWord in searchWords) {
-    query = query.where('searchToken.$searchWord', isEqualTo:  true);
+    query = query.where('searchToken.$searchWord', isEqualTo: true);
   }
   return query;
 }
+
+Query<Map<String,dynamic>> returnArtistSearchQuery({required List<String> searchWords}) {
+  Query<Map<String,dynamic>> query = FirebaseFirestore.instance.collection(artistsFieldKey).limit(30);
+  for(final searchWord in searchWords) {
+    query = query.where('searchToken.$searchWord', isEqualTo: true);
+  }
+  return query;
+}
+
+Query<Map<String,dynamic>> returnSongSearchQuery({required List<String> searchWords}) {
+  Query<Map<String,dynamic>> query = FirebaseFirestore.instance.collection(songsFieldKey).limit(30);
+  for(final searchWord in searchWords) {
+    query = query.where('searchToken.$searchWord', isEqualTo: true);
+  }
+  return query;
+}
+
+// List<Map<String, bool>>型からtrueの文字列飲みのList<String>を作成 --------------------
+List<String> extractSelectedGenres({required List<Map<String, bool>> genreList}) {
+  final selectedGenres = <String>[];
+  for(final genreMap in genreList) {
+    final genreName = genreMap.keys.first;
+    final isSelected = genreMap.values.first;
+    if(isSelected) {
+      selectedGenres.add(genreName);
+    }
+  }
+  return selectedGenres;
+}
+// --------------------------------------------------------------------------------------
 
 AppLocalizations returnL10n({required BuildContext context}) => AppLocalizations.of(context);

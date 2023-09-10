@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/constants/enums.dart';
-import 'package:sonanceep_sns/domain/created_rooms/created_rooms.dart';
-import 'package:sonanceep_sns/domain/firestore_room/firestore_room.dart';
-import 'package:sonanceep_sns/models/main/message_model.dart';
-import 'package:sonanceep_sns/views/main/passive_user_profile_page.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 // constants
 import 'package:sonanceep_sns/constants/voids.dart' as voids;

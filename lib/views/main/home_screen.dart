@@ -9,7 +9,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 // components
 import 'package:sonanceep_sns/details/sns_drawer.dart';
-import 'package:sonanceep_sns/details/post_card.dart';
+import 'package:sonanceep_sns/views/posts/components/post_card.dart';
 import 'package:sonanceep_sns/details/reload_screen.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';
 // model

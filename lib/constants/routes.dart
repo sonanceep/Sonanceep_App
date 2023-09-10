@@ -9,6 +9,9 @@ import 'package:sonanceep_sns/main.dart';
 import 'package:sonanceep_sns/models/auth/account_model.dart';
 import 'package:sonanceep_sns/views/account_page.dart';
 import 'package:sonanceep_sns/views/admin_page.dart';
+import 'package:sonanceep_sns/views/album_registration_page.dart';
+import 'package:sonanceep_sns/views/artists/artist_registration_page.dart';
+import 'package:sonanceep_sns/views/artists/artist_search_page.dart';
 import 'package:sonanceep_sns/views/auth/reauthentication_page.dart';
 import 'package:sonanceep_sns/views/auth/update_email_page.dart';
 import 'package:sonanceep_sns/views/auth/update_password_page.dart';
@@ -30,8 +33,10 @@ import 'package:sonanceep_sns/views/signup_page.dart';
 import 'package:sonanceep_sns/views/login_page.dart';
 // model
 import 'package:sonanceep_sns/models/main_model.dart';
+import 'package:sonanceep_sns/views/songs/song_profile_page.dart';
+import 'package:sonanceep_sns/views/songs/song_registration_page.dart';
 
-//画面遷移
+//ページ遷移
 void toMyApp({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const MyApp()));
 
 void toSignupPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const SignupPage()));
@@ -47,6 +52,13 @@ void toAccountPage({ required BuildContext context, required MainModel mainModel
 void toPassiveUserProfilePage({ required BuildContext context, required DocumentSnapshot<Map<String,dynamic>> passiveUserDoc, required MainModel mainModel}) => Navigator.push(context, MaterialPageRoute(builder: (context) => PassiveUserProfilePage(passiveUserDoc: passiveUserDoc, mainModel: mainModel,)));
 
 void toAdminPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => AdminPage(mainModel: mainModel)));
+
+void toSongProfilePage({
+  required BuildContext context,
+  required MainModel mainModel,
+  required DocumentSnapshot<Map<String, dynamic>> songDoc,
+  required int imageValue,
+}) => Navigator.push(context, MaterialPageRoute(builder: (context) => SongProfilePage(mainModel: mainModel, songDoc: songDoc, imageValue: imageValue)));
 
 void toCreatePostPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => CreatePostPage(mainModel: mainModel,)));
 
@@ -93,3 +105,17 @@ void toUpdatePasswordPage({ required BuildContext context }) => Navigator.push(c
 void toUpdateEmailPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdateEmailPage()));
 
 void toVerifyPasswordResetPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const VerifyPasswordResetPage()));
+
+
+//管理者権限ページ遷移
+void toArtistRegistrationPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const ArtistRegistrationPage()));
+
+void toAlbumRegistrationPage({ required BuildContext context, required DocumentSnapshot<Map<String,dynamic>> artistDoc }) => Navigator.push(context, MaterialPageRoute(builder: (context) => AlbumRegistrationPage(artistDoc: artistDoc)));
+
+void toSongRegistrationPage({
+  required BuildContext context,
+  required DocumentSnapshot<Map<String,dynamic>> artistDoc,
+  required List<Map<String, bool>> albumIdAndBoolList,
+}) => Navigator.push(context, MaterialPageRoute(builder: (context) => SongRegistrationPage(artistDoc: artistDoc, albumIdAndBoolList: albumIdAndBoolList)));
+
+void toArtistSearchPage({ required BuildContext context, required MainModel mainModel }) => Navigator.push(context, MaterialPageRoute(builder: (context) => ArtistSearchPage(mainModel: mainModel)));

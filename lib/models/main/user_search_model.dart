@@ -23,7 +23,7 @@ class UserSearchModel extends ChangeNotifier {
       await voids.showFlutterToast(msg: maxSearchLengthMsg);
     } else if(searchTerm.isNotEmpty) {
       final List<String> searchWords = returnSearchWords(searchTerm: searchTerm);
-      final Query<Map<String,dynamic>> query = returnSearchQuery(searchWords: searchWords);  //文字数−1個のwhereが必要
+      final Query<Map<String,dynamic>> query = returnUserSearchQuery(searchWords: searchWords);  //文字数−1個のwhereが必要
       await voids.processBasicDocs(muteUids: muteUids, mutePostIds: mutePostIds, docs: userDocs, query: query);
       notifyListeners();
     }

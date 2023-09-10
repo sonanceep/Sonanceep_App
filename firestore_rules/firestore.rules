@@ -13,6 +13,24 @@ service cloud.firestore {
     match /deleteUsers/{uid} {
       allow create: if isTheSameUserAndVerified(uid) && isValidUser(request.resource.data, uid);
     }
+    match /artists/{artistId} {
+      allow read: if isAuthenticatedAndVerified();
+      allow update: if isAdmin();
+      allow create: if isAdmin();
+      allow delete: if isAdmin();
+      match /albums/{albumId} {
+        allow read: if isAuthenticatedAndVerified();
+        allow update: if isAdmin();
+        allow create: if isAdmin();
+        allow delete: if isAdmin();
+      }
+    }
+    match /songs/{songId} {
+      allow read: if isAuthenticatedAndVerified();
+      allow update: if isAdmin();
+      allow create: if isAdmin();
+      allow delete: if isAdmin();
+    }
     match /rooms/{talkRoomId} {
       allow read: if isAuthenticatedAndVerified();
       allow update: if isAuthenticatedAndVerified();
@@ -64,7 +82,7 @@ service cloud.firestore {
         }
         match /postComments/{postCommentId} {
           allow read: if isAuthenticatedAndVerified();
-          allow create: if isValidPostComment(request.resource.data, uid);
+          allow create: if isValidPostComment(request.resource.data);
           // postCommentのdataのuidが現在ログインしている人と同じであれば消去できる
           allow delete: if isTheSameUserAndVerified(request.resource.data.uid);
           match /postCommentReports/{reportId} {
@@ -78,7 +96,7 @@ service cloud.firestore {
           }
           match /postCommentReplies/{postCommentReplyId} {
             allow read: if isAuthenticatedAndVerified();
-            allow create: if isValidPostCommentReply(request.resource.data, uid);
+            allow create: if isValidPostCommentReply(request.resource.data);
             // postCommentReplyのdataのuidが現在ログインしている人と同じであれば消去できる
             allow delete: if isTheSameUserAndVerified(request.resource.data.uid);
             match /postCommentReplyReports/{reportId} {
@@ -159,7 +177,7 @@ service cloud.firestore {
     post.uid == uid;  // documentに含まれているFirebaseAuthのuidと一致するか
   }
   //正しいコメントかデータのスキーマを検証
-  function isValidPostComment(comment, uid) {
+  function isValidPostComment(comment) {
     return comment.size() == 20 &&   // boolをreturn
     'createdAt' in comment && comment.createdAt is timestamp &&
     'comment' in comment && comment.comment is string &&
@@ -180,11 +198,10 @@ service cloud.firestore {
     'userNameSentiment' in comment && comment.userNameSentiment is string &&
     'uid' in comment && comment.uid is string &&
     'userImageURL' in comment && comment.userImageURL is string &&
-    'updatedAt' in comment && comment.updatedAt is timestamp &&
-    comment.uid == uid;  // documentに含まれているFirebaseAuthのuidと一致するか
+    'updatedAt' in comment && comment.updatedAt is timestamp;
   }
   //正しいリプライかデータのスキーマを検証
-  function isValidPostCommentReply(reply, uid) {
+  function isValidPostCommentReply(reply) {
     return reply.size() == 19 &&   // boolをretrun
     'createdAt' in reply && reply.createdAt is timestamp &&
     'reply' in reply && reply.reply is string &&
@@ -204,7 +221,6 @@ service cloud.firestore {
     'userNameSentiment' in reply && reply.userNameSentiment is string &&
     'uid' in reply && reply.uid is string &&
     'userImageURL' in reply && reply.userImageURL is string &&
-    'updatedAt' in reply && reply.updatedAt is timestamp &&
-    reply.uid == uid;  // documentに含まれているFirebaseAuthのuidと一致するか
+    'updatedAt' in reply && reply.updatedAt is timestamp;
   }
 }
