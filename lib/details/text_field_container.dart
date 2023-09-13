@@ -10,7 +10,7 @@ class TextFieldContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size =  MediaQuery.of(context).size;  //デバイスのサイズを取得
-    final double height = size.height;  //デバイスの高さ
+    // final double height = size.height;  //デバイスの高さ
     final double width = size.width;  //デバイスの幅
     // Centerで囲むと真ん中に配置される
     return Center(

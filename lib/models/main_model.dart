@@ -6,9 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sonanceep_sns/constants/enums.dart';
 // constants
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // domain
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/domain/following_token/following_token.dart';

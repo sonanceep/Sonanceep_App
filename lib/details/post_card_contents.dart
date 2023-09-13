@@ -1,12 +1,9 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:sonanceep_sns/constants/others.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';
-import 'package:sonanceep_sns/views/post_focus_page.dart';
 // constants
 import 'package:sonanceep_sns/constants/routes.dart' as routes;
-import 'package:video_player/video_player.dart';
 
 class PostCardContants extends StatelessWidget {
   const PostCardContants({

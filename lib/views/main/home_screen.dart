@@ -1,7 +1,6 @@
 // flutter
 import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
 import 'package:sonanceep_sns/models/themes_model.dart';
 // packages
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +13,6 @@ import 'package:sonanceep_sns/details/reload_screen.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';
 // model
 import 'package:sonanceep_sns/models/main/home_model.dart';
-import 'package:sonanceep_sns/models/create_post_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';
 // domain

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sonanceep_sns/models/mute_users_model.dart';
 
 class CardContainer extends StatelessWidget {
-  CardContainer({
+  const CardContainer({
     Key? key,
     required this.child,
     required this.onTap,

@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // components
 import 'package:sonanceep_sns/details/card_container.dart';
@@ -19,7 +18,6 @@ import 'package:sonanceep_sns/domain/post/post.dart';
 // models
 import 'package:sonanceep_sns/models/comments_model.dart';
 import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
-import 'package:sonanceep_sns/models/main/user_search_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_posts_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';

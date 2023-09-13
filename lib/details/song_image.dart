@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sonanceep_sns/details/circle_image.dart';
 import 'package:sonanceep_sns/details/rectangle_image.dart';
 
 class SongImage extends StatelessWidget {

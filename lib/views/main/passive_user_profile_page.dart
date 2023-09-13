@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 // packages
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sonanceep_sns/constants/colors.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // components
 import 'package:sonanceep_sns/details/user_header.dart';
 import 'package:sonanceep_sns/views/posts/components/post_card.dart';

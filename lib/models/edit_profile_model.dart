@@ -7,14 +7,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/constants/lists.dart';
 import 'package:sonanceep_sns/constants/maps.dart';
-import 'package:sonanceep_sns/constants/voids.dart'as voids;
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 // constants
 import 'package:sonanceep_sns/constants/others.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // domain
 import 'package:sonanceep_sns/domain/user_update_log/user_update_log.dart';
 

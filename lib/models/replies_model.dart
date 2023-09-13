@@ -11,7 +11,6 @@ import 'package:sonanceep_sns/constants/enums.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 // constants
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/domain/like_reply_token/like_reply_token.dart';
 // domain
 import 'package:sonanceep_sns/domain/comment/comment.dart';
@@ -233,37 +232,33 @@ class RepliesModel extends ChangeNotifier {
     // valueNotifierは変更をすぐに検知してくれる
     final selectedReportContentsNotifier = ValueNotifier<List<String>>([]);
     final String reportId = returnUuidV4();
+    final replyDocRef = replyDoc.reference;
 
     voids.showFlashDialog(
       context: context,
       content: ReportContentsListView(selectedReportContentsNotifier: selectedReportContentsNotifier),
-      positiveActionBuilder: (_, controller, __) {
-        final replyDocRef = replyDoc.reference;
-        return TextButton(
-          onPressed: () async {
-            final PostCommentReplyReport postCommentReplyReport = PostCommentReplyReport(
-              activeUid: returnAuthUser()!.uid,
-              createdAt: Timestamp.now(),
-              others: '',
-              reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
-              postCommentReplyCreatorUid: reply.uid,
-              passiveUserName: reply.userName,
-              postCommentReplyDocRef: replyDocRef,
-              postCommentReplyId: replyDoc.id,
-              postCommentReplyReportId: reportId,
-              reply: reply.reply,
-              replyLanguageCode: reply.replyLanguageCode,
-              replyNegativeScore: reply.replyNegativeScore,
-              replyPositiveScore: reply.replyPositiveScore,
-              replySentiment: reply.replySentiment,
-            );
-            await controller.dismiss();
-            await voids.showFlutterToast(msg: 'リプライを報告しました');
-            await replyDocRef.collection('postCommentReplyReports').doc(reportId).set(postCommentReplyReport.toJson());
-          },
-          child: const Text('送信', style: TextStyle(color: Colors.red),),
+      onPressed: () async {
+        final PostCommentReplyReport postCommentReplyReport = PostCommentReplyReport(
+          activeUid: returnAuthUser()!.uid,
+          createdAt: Timestamp.now(),
+          others: '',
+          reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
+          postCommentReplyCreatorUid: reply.uid,
+          passiveUserName: reply.userName,
+          postCommentReplyDocRef: replyDocRef,
+          postCommentReplyId: replyDoc.id,
+          postCommentReplyReportId: reportId,
+          reply: reply.reply,
+          replyLanguageCode: reply.replyLanguageCode,
+          replyNegativeScore: reply.replyNegativeScore,
+          replyPositiveScore: reply.replyPositiveScore,
+          replySentiment: reply.replySentiment,
         );
+        await voids.showFlutterToast(msg: reportedReplyMsg);
+        await replyDocRef.collection('postCommentReplyReports').doc(reportId).set(postCommentReplyReport.toJson());
+        Navigator.pop(context);
       },
+      child: const Text(repostText, style: TextStyle(color: Colors.red),),
     );
   }
 }

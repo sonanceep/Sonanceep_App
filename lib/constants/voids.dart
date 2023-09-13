@@ -20,25 +20,25 @@ void showFlashBar({
     required Color primaryActionColor,
     required Widget Function(BuildContext, FlashController<Object?>, void Function(void Function()))? primaryActionBuilder,
   }) {
-    context.showFlashBar(
-    content: Form(
-      child: TextFormField(
-        controller: textEditingController,
-        style: const TextStyle(fontWeight: FontWeight.bold),
-        onChanged: onChanged,
-        maxLength: 10,
-      ),
-    ),
-    // title: Text(titleString),
-    primaryActionBuilder: primaryActionBuilder,
-    // 閉じる時の動作
-    negativeActionBuilder: (context, controller, _) {
-      return InkWell(
-        child: const Icon(Icons.close),
-        onTap: () async => await controller.dismiss(),
-      );
-    },
-  );
+  //   context.showFlashBar(
+  //   content: Form(
+  //     child: TextFormField(
+  //       controller: textEditingController,
+  //       style: const TextStyle(fontWeight: FontWeight.bold),
+  //       onChanged: onChanged,
+  //       maxLength: 10,
+  //     ),
+  //   ),
+  //   // title: Text(titleString),
+  //   primaryActionBuilder: primaryActionBuilder,
+  //   // 閉じる時の動作
+  //   negativeActionBuilder: (context, controller, _) {
+  //     return InkWell(
+  //       child: const Icon(Icons.close),
+  //       onTap: () async => await controller.dismiss(),
+  //     );
+  //   },
+  // );
 }
 
 // onRefreshの内容
@@ -117,17 +117,25 @@ Future<void> showFlutterToast({required String msg}) async {
 void showFlashDialog({
   required BuildContext context,
   required Widget content,
-  required Widget Function(BuildContext, FlashController<Object?>,
-  void Function(void Function()))? positiveActionBuilder,
+  required void Function()? onPressed,
+  required Widget child,
 }) {
-  context.showFlashDialog(
-    content: content,
-    backgroundColor: const Color.fromRGBO(23, 23, 59, 0.9),
-    positiveActionBuilder: positiveActionBuilder,
-    negativeActionBuilder: (_, controller, __) {
-      return TextButton(
-        onPressed: () async => await controller.dismiss(),
-        child: const Text(backText),
+  showDialog(
+    barrierColor: const Color.fromRGBO(23, 23, 59, 0.9),
+    context: context,
+    builder: (_) {
+      return AlertDialog(
+        content: content,
+        actions: <Widget>[
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text(backText),
+          ),
+          TextButton(
+            onPressed: onPressed,
+            child: child,
+          ),
+        ],
       );
     },
   );

@@ -7,7 +7,6 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sonanceep_sns/constants/colors.dart';
 import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/domain/firestore_artist/firestore_artist.dart';
 import 'package:sonanceep_sns/models/artists/artist_search_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';

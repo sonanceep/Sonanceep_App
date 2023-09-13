@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/models/main/user_search_model.dart';
 import 'package:sonanceep_sns/views/main/components/search_screen.dart';
 // constants
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';

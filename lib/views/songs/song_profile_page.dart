@@ -7,11 +7,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sonanceep_sns/constants/colors.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/details/song_header.dart';
 // components
 import 'package:sonanceep_sns/domain/firestore_song/firestore_song.dart';
-import 'package:sonanceep_sns/models/songs/song_profile_model.dart';
 // models
 import 'package:sonanceep_sns/models/main_model.dart';
 
@@ -31,7 +29,7 @@ class SongProfilePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     // final RefreshController refreshController = RefreshController();
-    final SongProfileModel songProfileModel = ref.watch(songProfileProvider);
+    // final SongProfileModel songProfileModel = ref.watch(songProfileProvider);
     final FirestoreSong firestoreSong = FirestoreSong.fromJson(songDoc.data()!);
     // final postDocs = songProfileModel.postDocs;
 

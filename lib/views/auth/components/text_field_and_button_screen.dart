@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 // components
 import 'package:sonanceep_sns/details/rounded_button.dart';
-import 'package:sonanceep_sns/details/rounded_password_field.dart';
 import 'package:sonanceep_sns/details/rounded_text_field.dart';
 
 class TextFieldAndButtonScreen extends StatelessWidget {

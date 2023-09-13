@@ -1,5 +1,4 @@
 // package
-import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/domain/message/message.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart' as intel;
@@ -76,6 +75,7 @@ const String backText = '戻る';
 const String muteUserText = 'ユーザーをミュート';
 const String muteCommentText = 'コメントをミュート';
 const String mutePostText = '投稿をミュート';
+const String repostText = '報告';
 const String reportPostText = '投稿を報告';
 const String reportCommentText = 'コメントを報告';
 const String reportReplyText = 'リプライを報告';
@@ -132,6 +132,9 @@ const String pleaseSelectMsg = '形態を選択してください';
 const String notEnoughMsg = '情報が足りません。';
 const String notSetAlbumMsg = 'アルバムを選択してください。';
 const String formatErrorMsg = 'フォーマットを間違えています。';
+const String reportedPostMsg = '投稿を報告しました';
+const String reportedCommentMsg = 'コメントを報告しました';
+const String reportedReplyMsg = 'リプライを報告しました';
 // prefs key
 const String isDarkThemePrefsKey = 'isDarkTheme';
 // bottom navigation bar

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:algolia/algolia.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 // domain
-import 'package:sonanceep_sns/domain/post/post.dart';
 // constants
 import 'package:sonanceep_sns/constants/algolia_application.dart';
 import 'package:sonanceep_sns/constants/bools.dart';

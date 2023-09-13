@@ -13,7 +13,6 @@ import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // domain
-import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 
 final accountProvider = ChangeNotifierProvider(
   ((ref) => AccountModel()

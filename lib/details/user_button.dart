@@ -8,7 +8,6 @@ import 'package:sonanceep_sns/details/rounded_button.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
-import 'package:sonanceep_sns/models/main/message_model.dart';
 import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
 // model
 import 'package:sonanceep_sns/models/main_model.dart';
@@ -28,7 +27,6 @@ class UserButton extends ConsumerWidget {
 
     final String passiveUid = passiveUser.uid;
     final PassiveUserProfileModel passiveUserProfileModel = ref.watch(passiveUserProfileProvider);
-    final MessageModel messageModel = ref.watch(messageProvider);
 
     return mainModel.currentUserDoc.id == passiveUid ?   //自分か本人か、自分なら編集するためのボタンをリターン、違うならフォロー,アンフォローボタンをリターン
     RoundedButton(

@@ -8,8 +8,6 @@ import 'package:sonanceep_sns/constants/lists.dart';
 import 'package:sonanceep_sns/constants/others.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
-import 'package:sonanceep_sns/domain/firestore_song/firestore_song.dart';
 
 final songSearchProvider = ChangeNotifierProvider(
   (ref) => SongSearchModel(),

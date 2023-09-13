@@ -1,10 +1,8 @@
 // flutter
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // package
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
@@ -13,7 +11,6 @@ import 'package:sonanceep_sns/domain/firestore_room/firestore_room.dart';
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/domain/message/message.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
-import 'package:sonanceep_sns/views/message/message_page.dart';
 
 final messageProvider = ChangeNotifierProvider(
   ((ref) => MessageModel()

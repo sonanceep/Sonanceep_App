@@ -44,7 +44,7 @@ function mul100AndRoundingDown(num) {
 function sendMail(text, subject) {
     sgMail.setApiKey(SENDGRID_API_KEY);  //関数のたびにAPIをセットしなければならない
     const msg = {
-        to: 'hiro.8181.58@ezweb.ne.jp',  //送り先
+        to: 'sonanceep@gmail.com',  //送り先
         from: 'hi130404@gmail.com',  //送り元
         subject: subject,  //主題
         text: text,  //内容

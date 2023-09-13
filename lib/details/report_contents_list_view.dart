@@ -14,6 +14,7 @@ class ReportContentsListView extends StatelessWidget {
     // dialogで表示するので高さが必要
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.5,
+      width: MediaQuery.of(context).size.width * 0.7,
       // valueNotifierの変更を検知
       child: ValueListenableBuilder<List<String>>(
         valueListenable: selectedReportContentsNotifier,

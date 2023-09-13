@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 // models
 import 'package:sonanceep_sns/models/artists/artist_registration_model.dart';
 // components

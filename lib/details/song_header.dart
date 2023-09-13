@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/details/song_button.dart';
 import 'package:sonanceep_sns/details/song_image.dart';
 // components
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/domain/firestore_song/firestore_song.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 

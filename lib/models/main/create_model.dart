@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // package
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
 
 final createProvider = ChangeNotifierProvider(
   ((ref) => CreateModel()

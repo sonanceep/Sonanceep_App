@@ -7,7 +7,6 @@ import 'package:sonanceep_sns/constants/others.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/routes.dart' as routs;
-import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // models
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/auth/account_model.dart';

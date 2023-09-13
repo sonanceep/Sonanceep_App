@@ -1,6 +1,7 @@
 // flutter
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flash/flash.dart';
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,7 +11,6 @@ import 'package:sonanceep_sns/constants/others.dart';
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/details/report_contents_list_view.dart';
-import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // domain
 import 'package:sonanceep_sns/domain/like_post_token/like_post_token.dart';
 import 'package:sonanceep_sns/domain/post/post.dart';
@@ -98,37 +98,33 @@ class PostsModel extends ChangeNotifier {
     final selectedReportContentsNotifier = ValueNotifier<List<String>>([]);
     final String postReportId = returnUuidV4();
 
+    final postDocRef = postDoc.reference;
     voids.showFlashDialog(
       context: context,
       content: ReportContentsListView(selectedReportContentsNotifier: selectedReportContentsNotifier),
-      positiveActionBuilder: (_, controller, __) {
-        final postDocRef = postDoc.reference;
-        return TextButton(
-          onPressed: () async {
-            //ドキュメントを作成
-            final PostReport postReport = PostReport(
-              activeUid: returnAuthUser()!.uid,
-              createdAt: Timestamp.now(),
-              others: '',
-              reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
-              postCreatorUid: post.uid,
-              passiveUserName: post.userName,
-              postDocRef: postDoc.reference,
-              postId: post.postId,
-              postReportId: postReportId,
-              text: post.text,
-              textLanguageCode: post.textLanguageCode,
-              textNegativeScore: post.textNegativeScore,
-              textPositiveScore: post.textPositiveScore,
-              textSentiment: post.textSentiment,
-            );
-            await controller.dismiss();
-            await voids.showFlutterToast(msg: '投稿を報告しました');
-            await postDocRef.collection('postReports').doc(postReportId).set(postReport.toJson());  // ドメインを形にする  rulesを作成
-          },
-          child: const Text('送信', style: TextStyle(color: Colors.red),),
+      onPressed: () async {
+        //ドキュメントを作成
+        final PostReport postReport = PostReport(
+          activeUid: returnAuthUser()!.uid,
+          createdAt: Timestamp.now(),
+          others: '',
+          reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
+          postCreatorUid: post.uid,
+          passiveUserName: post.userName,
+          postDocRef: postDoc.reference,
+          postId: post.postId,
+          postReportId: postReportId,
+          text: post.text,
+          textLanguageCode: post.textLanguageCode,
+          textNegativeScore: post.textNegativeScore,
+          textPositiveScore: post.textPositiveScore,
+          textSentiment: post.textSentiment,
         );
+        await voids.showFlutterToast(msg: reportedPostMsg);
+        await postDocRef.collection('postReports').doc(postReportId).set(postReport.toJson());  // ドメインを形にする  rulesを作成
+        Navigator.pop(context);
       },
+      child: const Text(repostText, style: TextStyle(color: Colors.red),),
     );
   }
 }

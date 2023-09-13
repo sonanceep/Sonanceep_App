@@ -7,15 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+// constants
 import 'package:sonanceep_sns/constants/lists.dart';
 import 'package:sonanceep_sns/constants/maps.dart';
 import 'package:sonanceep_sns/constants/others.dart';
-// constants
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
-import 'package:sonanceep_sns/domain/album/album.dart';
 // domain
+import 'package:sonanceep_sns/domain/album/album.dart';
 import 'package:sonanceep_sns/domain/firestore_artist/firestore_artist.dart';
 
 final albumRegistrationProvider =

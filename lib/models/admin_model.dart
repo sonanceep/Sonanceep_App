@@ -1,24 +1,9 @@
 // flutter
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // package
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sonanceep_sns/constants/enums.dart';
-import 'package:sonanceep_sns/constants/lists.dart';
-import 'package:sonanceep_sns/constants/maps.dart';
-import 'package:sonanceep_sns/constants/voids.dart';
-import 'package:sonanceep_sns/domain/comment/comment.dart';
-import 'package:sonanceep_sns/domain/follower/follower.dart';
-import 'package:sonanceep_sns/domain/following_token/following_token.dart';
-import 'package:sonanceep_sns/domain/mute_user_token/mute_user_token.dart';
-import 'package:sonanceep_sns/domain/user_mute/user_mute.dart';
-import 'package:sonanceep_sns/models/mute_users_model.dart';
-import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
-import 'package:sonanceep_sns/domain/post/post.dart';
 // constants
-import 'package:sonanceep_sns/constants/others.dart';
 
 final adminProvider = ChangeNotifierProvider(
   ((ref) => AdminModel()

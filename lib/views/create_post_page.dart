@@ -8,9 +8,6 @@ import 'package:sonanceep_sns/details/rounded_text_field.dart';
 import 'package:sonanceep_sns/models/create_post_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 
-import 'package:sonanceep_sns/models/main/create_model.dart';
-import 'package:video_player/video_player.dart';
-
 class CreatePostPage extends ConsumerWidget {
   const CreatePostPage({
     Key? key,

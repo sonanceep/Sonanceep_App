@@ -3,11 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
-import 'package:sonanceep_sns/domain/firestore_artist/firestore_artist.dart';
 import 'package:sonanceep_sns/models/album_registration_model.dart';
 // models
-import 'package:sonanceep_sns/models/album_registration_model.dart';
 // components
 import 'package:sonanceep_sns/details/rounded_text_field.dart';
 import 'package:sonanceep_sns/details/rounded_button.dart';

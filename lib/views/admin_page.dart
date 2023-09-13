@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/details/rounded_button.dart';
 // models
-import 'package:sonanceep_sns/models/admin_model.dart';
+// import 'package:sonanceep_sns/models/admin_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 // constants
 import 'package:sonanceep_sns/constants/strings.dart';
@@ -19,7 +19,7 @@ class AdminPage extends ConsumerWidget {
   final MainModel mainModel;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AdminModel adminModel = ref.watch(adminProvider);
+    // final AdminModel adminModel = ref.watch(adminProvider);
     return Scaffold(
       appBar: AppBar(title: const Text(adminTitle),),
       body: Column(

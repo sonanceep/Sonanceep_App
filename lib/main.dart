@@ -6,13 +6,11 @@ import 'package:flutter/material.dart';
 // packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:sonanceep_sns/constants/others.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:sonanceep_sns/models/main/passive_user_profile_model.dart';
 // models
 import 'package:sonanceep_sns/models/main_model.dart';
 import 'package:sonanceep_sns/models/mute_users_model.dart';
@@ -26,7 +24,6 @@ import 'firebase_options.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:sonanceep_sns/constants/themes.dart';
 // components
-import 'package:sonanceep_sns/details/sns_drawer.dart';
 import 'package:sonanceep_sns/views/main/home_screen.dart';
 import 'package:sonanceep_sns/views/main/search_page.dart';
 import 'package:sonanceep_sns/views/main/profile_screen.dart';

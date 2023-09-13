@@ -114,4 +114,4 @@ List<String> extractSelectedGenres({required List<Map<String, bool>> genreList})
 }
 // --------------------------------------------------------------------------------------
 
-AppLocalizations returnL10n({required BuildContext context}) => AppLocalizations.of(context);
+AppLocalizations returnL10n({required BuildContext context}) => AppLocalizations.of(context)!;

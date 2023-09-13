@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 // packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/constants/colors.dart';
-import 'package:sonanceep_sns/constants/others.dart';
-import 'package:sonanceep_sns/constants/voids.dart' as voids;
-import 'package:sonanceep_sns/domain/firestore_artist/firestore_artist.dart';
 // models
 import 'package:sonanceep_sns/models/songs/song_registration_model.dart';
 // components

@@ -231,37 +231,33 @@ class CommentsModel extends ChangeNotifier {
     // valueNotifierは変更をすぐに検知してくれる
     final selectedReportContentsNotifier = ValueNotifier<List<String>>([]);
     final String postCommentReportId = returnUuidV4();
+    final commentDocRef = commentDoc.reference;
 
     voids.showFlashDialog(
       context: context,
       content: ReportContentsListView(selectedReportContentsNotifier: selectedReportContentsNotifier),
-      positiveActionBuilder: (_, controller, __) {
-        final commentDocRef = commentDoc.reference;
-        return TextButton(
-          onPressed: () async {
-            final PostCommentReport postCommentReport = PostCommentReport(
-              activeUid: returnAuthUser()!.uid,
-              createdAt: Timestamp.now(),
-              others: '',
-              reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
-              postCommentCreatorUid: comment.uid,
-              passiveUserName: comment.userName,
-              postCommentDocRef: commentDocRef,
-              postCommentId: comment.postCommentId,
-              postCommentReportId: postCommentReportId,
-              comment: comment.comment,
-              commentLanguageCode: comment.commentLanguageCode,
-              commentNegativeScore: comment.commentNegativeScore,
-              commentPositiveScore: comment.commentPositiveScore,
-              commentSentiment: comment.commentSentiment,
-            );
-            await controller.dismiss();
-            await voids.showFlutterToast(msg: 'コメントを報告しました');
-            await commentDocRef.collection('postCommentReports').doc(postCommentReportId).set(postCommentReport.toJson());
-          },
-          child: const Text('送信', style: TextStyle(color: Colors.red),),
+      onPressed: () async {
+        final PostCommentReport postCommentReport = PostCommentReport(
+          activeUid: returnAuthUser()!.uid,
+          createdAt: Timestamp.now(),
+          others: '',
+          reportContent: retrunReportContentString(selectedReportContents: selectedReportContentsNotifier.value),
+          postCommentCreatorUid: comment.uid,
+          passiveUserName: comment.userName,
+          postCommentDocRef: commentDocRef,
+          postCommentId: comment.postCommentId,
+          postCommentReportId: postCommentReportId,
+          comment: comment.comment,
+          commentLanguageCode: comment.commentLanguageCode,
+          commentNegativeScore: comment.commentNegativeScore,
+          commentPositiveScore: comment.commentPositiveScore,
+          commentSentiment: comment.commentSentiment,
         );
+        await voids.showFlutterToast(msg: reportedCommentMsg);
+        await commentDocRef.collection('postCommentReports').doc(postCommentReportId).set(postCommentReport.toJson());
+        Navigator.pop(context);
       },
+      child: const Text(repostText, style: TextStyle(color: Colors.red),),
     );
   }
 }

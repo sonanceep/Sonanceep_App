@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/details/user_button.dart';
 // components
 import 'package:sonanceep_sns/details/user_image.dart';
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 

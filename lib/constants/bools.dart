@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/domain/comment/comment.dart';
 import 'package:sonanceep_sns/domain/reply/reply.dart';
-import 'package:sonanceep_sns/models/main/message_model.dart';
 import 'package:sonanceep_sns/models/main_model.dart';
 
 bool isValidUser({required List<String> muteUids, required Map<String,dynamic> map}) => !muteUids.contains(map['uid']);

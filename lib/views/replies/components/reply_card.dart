@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sonanceep_sns/constants/bools.dart';
 // constants
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 // components
 import 'package:sonanceep_sns/details/card_container.dart';
 import 'package:sonanceep_sns/details/user_image.dart';

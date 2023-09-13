@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:sonanceep_sns/domain/firestore_user/firestore_user.dart';
 // packeges
 part 'firestore_room.freezed.dart';
 part 'firestore_room.g.dart';

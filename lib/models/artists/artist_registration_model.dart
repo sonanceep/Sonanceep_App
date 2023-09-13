@@ -13,7 +13,6 @@ import 'package:sonanceep_sns/constants/others.dart';
 // constants
 import 'package:sonanceep_sns/constants/voids.dart' as voids;
 import 'package:sonanceep_sns/constants/strings.dart';
-import 'package:sonanceep_sns/constants/routes.dart' as routes;
 // domain
 import 'package:sonanceep_sns/domain/firestore_artist/firestore_artist.dart';
 
