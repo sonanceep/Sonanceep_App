@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 // packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -44,7 +45,14 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform,
     );
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;  // Dartのエラーを報告
-    runApp(const ProviderScope(child: MyApp()));  // runApp() が最初に動くことでアプリを走られることができる
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]).then((_) {
+      runApp(const ProviderScope(child: MyApp()));  // runApp() が最初に動くことでアプリを走られることができる
+    });
   }, (error, stackTrace) {
     FirebaseCrashlytics.instance.recordError(error, stackTrace);
   });

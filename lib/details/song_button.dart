@@ -10,8 +10,8 @@ import 'package:sonanceep_sns/constants/routes.dart' as routes;
 // model
 import 'package:sonanceep_sns/models/main_model.dart';
 
-class SongButton extends ConsumerWidget {
-  const SongButton({
+class SongCreateButton extends ConsumerWidget {
+  const SongCreateButton({
     Key? key,
     required this.mainModel,
   }) : super(key: key);
@@ -22,7 +22,7 @@ class SongButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     return RoundedButton(
-      onPressed: () => routes.toCreatePostPage(context: context, mainModel: mainModel),
+      onPressed: () => routes.toDawMobilePage(context: context),
       widthRate: 0.85,
       color: Colors.purple,
       text: createPostText,

@@ -44,5 +44,14 @@ post_install do |installer|
   end
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    xcode_base_version = `xcodebuild -version | grep 'Xcode' | awk ' {print $2}' | cut -d . -f 1` # Xcodeのバージョンを取得
+    target.build_configurations.each do |config|
+      if config.base_configuration_reference && Integer(xcode_base_version) >= 15 # Xcodeのバージョンが15以上の場合
+        xcconfig_path = config.base_configuration_reference.real_path # xcconfigファイルのパスを取得
+        xcconfig = File.read(xcconfig_path) # xcconfigファイルの内容を読み込む
+        xcconfig_mod = xcconfig.gsub(/DT_TOOLCHAIN_DIR/, "TOOLCHAIN_DIR") # $DT_TOOLCHAIN_DIRを$TOOLCHAIN_DIRに置き換える
+        File.open(xcconfig_path, "w") { |file| file << xcconfig_mod } # xcconfigファイルに書き込む
+      end
+    end
   end
 end

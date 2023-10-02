@@ -19,6 +19,7 @@ import 'package:sonanceep_sns/views/auth/verify_email_page.dart';
 import 'package:sonanceep_sns/views/auth/verify_password_reset_page.dart';
 import 'package:sonanceep_sns/views/comments/comments_page.dart';
 import 'package:sonanceep_sns/views/create_post_page.dart';
+import 'package:sonanceep_sns/views/daw_mobile/daw_mobile_page.dart';
 import 'package:sonanceep_sns/views/edit_profile_page.dart';
 import 'package:sonanceep_sns/views/finished_page.dart';
 import 'package:sonanceep_sns/views/main/passive_user_profile_page.dart';
@@ -105,6 +106,10 @@ void toUpdatePasswordPage({ required BuildContext context }) => Navigator.push(c
 void toUpdateEmailPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const UpdateEmailPage()));
 
 void toVerifyPasswordResetPage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const VerifyPasswordResetPage()));
+
+void toDawMobilePage({ required BuildContext context }) => Navigator.push(context, MaterialPageRoute(builder: (context) => const DawMobilePage()));
+
+
 
 
 //管理者権限ページ遷移

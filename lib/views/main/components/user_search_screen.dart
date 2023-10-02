@@ -1,4 +1,5 @@
 // flutter
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sonanceep_sns/models/main/user_search_model.dart';
 import 'package:sonanceep_sns/views/main/components/search_screen.dart';
@@ -36,7 +37,7 @@ class UserSearchScreen extends ConsumerWidget {
         itemBuilder: (
           (context, index) {
             // usersの配列から１個１個取得している
-            final userDoc = userDocs[index];
+            final DocumentSnapshot<Map<String, dynamic>> userDoc = userDocs[index];
             final FirestoreUser firestoreUser = FirestoreUser.fromJson(userDoc.data()!);
 
             return ListTile(

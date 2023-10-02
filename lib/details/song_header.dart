@@ -40,7 +40,7 @@ class SongHeader extends StatelessWidget {
               ],
             ),
           ),
-          SongButton(mainModel: mainModel),
+          SongCreateButton(mainModel: mainModel),
         ]
       ),
     );

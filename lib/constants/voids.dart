@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // package
 import 'package:flash/flash.dart';
+import 'package:flutter/services.dart';
 import 'package:sonanceep_sns/constants/strings.dart';
 import 'package:fluttertoast/fluttertoast.dart' as fluttertoast;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -140,3 +141,12 @@ void showFlashDialog({
     },
   );
 }
+
+// // ページが表示されるときに横画面にする
+// void initState() {
+//   super.initState();
+//   SystemChrome.setPreferredOrientations([
+//     DeviceOrientation.landscapeLeft,
+//     DeviceOrientation.landscapeRight,
+//   ]);
+// }

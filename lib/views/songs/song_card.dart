@@ -46,15 +46,15 @@ class SongCard extends ConsumerWidget {
             ),
             Text(firestoreSong.songName),
             const Expanded(child: SizedBox()),
-            Padding(
-              padding: const EdgeInsets.only(right: 24.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 24.0),
               child: SizedBox(
                 height: 80,
                 width: 100,
                 child: CardContainer(
                   onTap: null,
                   borderColor: Colors.green,
-                  child: const Center(child: Text('選択')),
+                  child: Center(child: Text('選択')),
                 ),
               ),
             ),

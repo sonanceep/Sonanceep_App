@@ -40,7 +40,17 @@ class PassiveUserProfileModel extends ChangeNotifier {
         return query.orderBy('createdAt', descending: false);
     }
   }
-  
+
+  Future<void> onUserPostIconPressed({
+    required BuildContext context,
+    required MainModel mainModel,
+    required String passiveUid,
+  }) async {
+    final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection(usersFieldKey).where('uid', isEqualTo: passiveUid).get();
+    final List<DocumentSnapshot<Map<String, dynamic>>> docs = qshot.docs;
+    final passiveUserDoc = docs.first;
+    await onUserIconPressed(context: context, mainModel: mainModel, passiveUserDoc: passiveUserDoc);
+  }
 
   Future<void> onUserIconPressed({
     // required RefreshController refreshController,
@@ -85,7 +95,7 @@ class PassiveUserProfileModel extends ChangeNotifier {
       tokenType: followingTokenTypeString,
     );
     final FirestoreUser activeUser = mainModel.firestoreUser;
-    final newActiveUser = activeUser.copyWith(followingCount: activeUser.followingCount + 1);
+    final FirestoreUser newActiveUser = activeUser.copyWith(followingCount: activeUser.followingCount + 1);
     mainModel.firestoreUser = newActiveUser;
     notifyListeners();
 
@@ -121,12 +131,12 @@ class PassiveUserProfileModel extends ChangeNotifier {
 
     //フォローしているTokenを取得する
     final FirestoreUser activeUser = mainModel.firestoreUser;
-    final newActiveUser = activeUser.copyWith(followingCount: activeUser.followingCount - 1);
+    final FirestoreUser newActiveUser = activeUser.copyWith(followingCount: activeUser.followingCount - 1);
     mainModel.firestoreUser = newActiveUser;
     notifyListeners();
 
     // qshotというデータの塊の存在を取得
-    final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection('users').doc(activeUser.uid).collection('tokens').where('passiveUid', isEqualTo: passiveUser.uid).get();
+    final QuerySnapshot<Map<String, dynamic>> qshot = await FirebaseFirestore.instance.collection(usersFieldKey).doc(activeUser.uid).collection('tokens').where('passiveUid', isEqualTo: passiveUser.uid).get();
     final List<DocumentSnapshot<Map<String, dynamic>>> docs = qshot.docs;  //一個しか取得していないが複数している扱い
     final DocumentSnapshot<Map<String, dynamic>> token = docs.first;
 

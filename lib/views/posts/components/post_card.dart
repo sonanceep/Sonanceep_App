@@ -59,7 +59,7 @@ class PostCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap: () async => await passiveUserProfileModel.onUserIconPressed(context: context, mainModel: mainModel, passiveUserDoc: postDoc,),
+                onTap: () async => await passiveUserProfileModel.onUserPostIconPressed(context: context, mainModel: mainModel, passiveUid: post.uid,),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: UserImage(
