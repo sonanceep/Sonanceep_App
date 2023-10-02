@@ -22,8 +22,13 @@ class SongHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final screenSize = MediaQuery.of(context).size;
+    final screenHight = screenSize.height;
+    final screenWidth = screenSize.width;
+
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.2,
+      height: (screenWidth < screenHight ? screenHight : screenWidth) * 0.2,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
